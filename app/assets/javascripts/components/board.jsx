@@ -1124,10 +1124,29 @@ class Board extends React.Component {
       );
     }
 
+    renderCurrentTurn(currentTurn) {
+      return(
+        <CurrentTurn
+          value={currentTurn}
+        />
+      );
+    }
+
+    renderSelectedPiece(selPce) {
+      return (
+        <SelectedPiece
+          value={selPce}
+        />
+      );
+    }
+
     render() {
         return (
           <div>
     
+          {this.renderCurrentTurn(this.state.blackTeamsTurn)}
+          {this.renderSelectedPiece(this.state.selPce)}
+
             <div className="board-row">
               {this.renderSquare(0, 0)}
               {this.renderSquare(0, 1)}
