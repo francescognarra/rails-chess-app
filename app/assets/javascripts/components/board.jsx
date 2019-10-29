@@ -1140,12 +1140,37 @@ class Board extends React.Component {
       );
     }
 
+    renderWhitePawnPromotion() {
+      if(this.state.board[7][this.state.selPceColInx] === '♙') {
+        return (
+          <div>
+            <WhitePawnPromotion
+              value={this.state.selPceColInx}
+            />
+            <PromoteToWhiteRook
+              onClick={() => this.promoteToWhiteRook(7, this.state.selPceColInx)}
+            />
+            <PromoteToWhiteBishop
+              onClick={() => this.promoteToWhiteBishop(7, this.state.selPceColInx)}
+            />
+            <PromoteToWhiteknight
+              onClick={() => this.promoteToWhiteKnight(7, this.state.selPceColInx)}
+            />
+            <PromoteToWhiteQueen
+              onClick={() => this.promoteToWhiteQueen(7, this.state.selPceColInx)}
+            />
+          </div>
+        );
+      }
+    }
+
     render() {
         return (
           <div>
     
           {this.renderCurrentTurn(this.state.blackTeamsTurn)}
           {this.renderSelectedPiece(this.state.selPce)}
+          {this.renderWhitePawnPromotion()}
 
             <div className="board-row">
               {this.renderSquare(0, 0)}
