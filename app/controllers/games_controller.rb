@@ -1,7 +1,12 @@
 class GamesController < ApplicationController
 
+  # def index
+  #   @game = Game.all
+  # end
+
   def index
-    @game = Game.all
+    games = Game.order(id: :asc)
+    render json: games.as_json()
   end
 
   def new

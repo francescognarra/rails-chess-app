@@ -1212,6 +1212,12 @@ class Board extends React.Component {
       );
     }
 
+    getGames() {
+      axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games')
+      .then((res) => console.log(res.data) )
+      .catch((err) => console.log(err.response.data) );
+    }
+
     render() {
       return (
         <div>
