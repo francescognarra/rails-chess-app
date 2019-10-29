@@ -1164,6 +1164,30 @@ class Board extends React.Component {
       }
     }
 
+    renderBlackPawnPromotion() {
+      if(this.state.board[0][this.state.selPceColInx] === '♟') {
+        return(
+          <div>
+            <BlackPawnPromotion
+              value={this.state.selPceColInx}
+            />
+            <PromoteToBlackRook
+              onClick={() => this.promoteToBlackRook(0, this.state.selPceColInx)}
+            />
+            <PromoteToBlackBishop
+              onClick={() => this.promoteToBlackBishop(0, this.state.selPceColInx)}
+            />
+            <PromoteToBlackKnight
+              onClick={() => this.promoteToBlackKnight(0, this.state.selPceColInx)}
+            />
+            <PromoteToBlackQueen
+              onClick={() => this.promoteToBlackQueen(0, this.state.selPceColInx)}
+            />
+          </div>
+        );
+      }
+    }
+
     render() {
         return (
           <div>
@@ -1171,6 +1195,7 @@ class Board extends React.Component {
           {this.renderCurrentTurn(this.state.blackTeamsTurn)}
           {this.renderSelectedPiece(this.state.selPce)}
           {this.renderWhitePawnPromotion()}
+          {this.renderBlackPawnPromotion()}
 
             <div className="board-row">
               {this.renderSquare(0, 0)}
