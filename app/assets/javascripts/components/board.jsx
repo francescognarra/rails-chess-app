@@ -1212,8 +1212,8 @@ class Board extends React.Component {
       );
     }
 
-    getGames() {
-      axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games')
+    getGame() {
+      axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/0/edit')
       .then((res) => console.log(res.data) )
       .catch((err) => console.log(err.response.data) );
     }
@@ -1222,6 +1222,7 @@ class Board extends React.Component {
       return (
         <div>
 
+          {this.getGame()}
           {this.renderCurrentTurn(this.state.blackTeamsTurn)}
           <br />
           {this.renderSelectedPiece(this.state.selPce)}
