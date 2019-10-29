@@ -1,20 +1,30 @@
 class GamesController < ApplicationController
 
-  # def index
-  #   @game = Game.all
-  # end
-
   def index
-    games = Game.order(id: :asc)
-    render json: games.as_json()
+    @game = Game.all
   end
 
   def new
     @game = Game.new
   end
 
+  def show
+    game = Game.find(params[:id])
+    render json: game.as_json()
+  end
+
   def create
     @game = current_user.games.create(game_params)
+    @game.update_attribute(:board, [
+      ['♖', '♘', '♗', '♔', '♕', '♗', '♘', '♖'],
+      ['♙', '♙', '♙', '♙', '♙', '♙', '♙', '♙'],
+      [nil, nil, nil, nil, nil, nil, nil, nil],
+      ['♙', '♙', '♙', '♙', '♙', '♙', '♙', '♙'],
+      [nil, nil, nil, nil, nil, nil, nil, nil],
+      [nil, nil, nil, nil, nil, nil, nil, nil],
+      ['♙', '♙', '♙', '♙', '♙', '♙', '♙', '♙'],
+      ['♜', '♞', '♝', '♚', '♛', '♝', '♞', '♜']
+    ])
     redirect_to edit_game_path(@game)
   end
 

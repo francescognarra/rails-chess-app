@@ -1,3 +1,19 @@
 <h1>This is the part where you play chess</h1>
 
-<%= react_component("Board") %>
+<%= react_component("Board", {id: @game.id}) %>
+
+<%= @game.board[0] %>
+<br />
+<%= @game.board[1] %>
+<br />
+<%= @game.board[2] %>
+<br />
+<%= @game.board[3] %>
+<br />
+<%= @game.board[4] %>
+<br />
+<%= @game.board[5] %>
+<br />
+<%= @game.board[6] %>
+<br />
+<%= @game.board[7] %>

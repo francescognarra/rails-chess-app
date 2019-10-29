@@ -1025,6 +1025,7 @@ class Board extends React.Component {
         }
       }
       this.gameIsOver(this.state.board);
+      this.getGame()
     }
   
     // I plan on updating this function to detect checkmates at a later time
@@ -1213,8 +1214,14 @@ class Board extends React.Component {
     }
 
     getGame() {
-      axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games')
-      .then((res) => console.log(res.data) )
+      console.log(this.props.id)
+      axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
+      //axios.get('http://localhost:3000/games/' + this.props.id)
+      // .then((res) => console.log(res.data.board) )
+      .then((res) =>
+      this.setState({
+        board: res.data.board
+      }) )
       .catch((err) => console.log(err.response.data) );
     }
 
@@ -1222,7 +1229,6 @@ class Board extends React.Component {
       return (
         <div>
 
-          {this.getGame()}
           {this.renderCurrentTurn(this.state.blackTeamsTurn)}
           <br />
           {this.renderSelectedPiece(this.state.selPce)}
