@@ -1188,104 +1188,168 @@ class Board extends React.Component {
       }
     }
 
+    renderUpperLetterColumnSquare(letter) {
+      return(
+        <UpperLetterColumnSquare
+          value={letter}
+        />
+      );
+    }
+  
+    renderLowerLetterColumnSquare(letter) {
+      return(
+        <LowerLetterColumnSquare
+          value={letter}
+        />
+      );
+    }
+  
+    renderNumberColumnSquare(number) {
+      return(
+        <NumberColumnSquare
+          value={number}
+        />
+      );
+    }
+
     render() {
-        return (
-          <div>
-    
+      return (
+        <div>
+
           {this.renderCurrentTurn(this.state.blackTeamsTurn)}
+          <br />
           {this.renderSelectedPiece(this.state.selPce)}
           {this.renderWhitePawnPromotion()}
           {this.renderBlackPawnPromotion()}
 
-            <div className="board-row">
-              {this.renderSquare(0, 0)}
-              {this.renderSquare(0, 1)}
-              {this.renderSquare(0, 2)}
-              {this.renderSquare(0, 3)}
-              {this.renderSquare(0, 4)}
-              {this.renderSquare(0, 5)}
-              {this.renderSquare(0, 6)}
-              {this.renderSquare(0, 7)}
-            </div>
-    
-            <div className="board-row">
-              {this.renderSquare(1, 0)}
-              {this.renderSquare(1, 1)}
-              {this.renderSquare(1, 2)}
-              {this.renderSquare(1, 3)}
-              {this.renderSquare(1, 4)}
-              {this.renderSquare(1, 5)}
-              {this.renderSquare(1, 6)}
-              {this.renderSquare(1, 7)}
-            </div>
-    
-            <div className="board-row">
-              {this.renderSquare(2, 0)}
-              {this.renderSquare(2, 1)}
-              {this.renderSquare(2, 2)}
-              {this.renderSquare(2, 3)}
-              {this.renderSquare(2, 4)}
-              {this.renderSquare(2, 5)}
-              {this.renderSquare(2, 6)}
-              {this.renderSquare(2, 7)}
-            </div>
-    
-            <div className="board-row">
-              {this.renderSquare(3, 0)}
-              {this.renderSquare(3, 1)}
-              {this.renderSquare(3, 2)}
-              {this.renderSquare(3, 3)}
-              {this.renderSquare(3, 4)}
-              {this.renderSquare(3, 5)}
-              {this.renderSquare(3, 6)}
-              {this.renderSquare(3, 7)}
-            </div>
-    
-            <div className="board-row">
-              {this.renderSquare(4, 0)}
-              {this.renderSquare(4, 1)}
-              {this.renderSquare(4, 2)}
-              {this.renderSquare(4, 3)}
-              {this.renderSquare(4, 4)}
-              {this.renderSquare(4, 5)}
-              {this.renderSquare(4, 6)}
-              {this.renderSquare(4, 7)}
-            </div>
-    
-            <div className="board-row">
-              {this.renderSquare(5, 0)}
-              {this.renderSquare(5, 1)}
-              {this.renderSquare(5, 2)}
-              {this.renderSquare(5, 3)}
-              {this.renderSquare(5, 4)}
-              {this.renderSquare(5, 5)}
-              {this.renderSquare(5, 6)}
-              {this.renderSquare(5, 7)}
-            </div>
-    
-            <div className="board-row">
-              {this.renderSquare(6, 0)}
-              {this.renderSquare(6, 1)}
-              {this.renderSquare(6, 2)}
-              {this.renderSquare(6, 3)}
-              {this.renderSquare(6, 4)}
-              {this.renderSquare(6, 5)}
-              {this.renderSquare(6, 6)}
-              {this.renderSquare(6, 7)}
-            </div>
-    
-            <div className="board-row">
-              {this.renderSquare(7, 0)}
-              {this.renderSquare(7, 1)}
-              {this.renderSquare(7, 2)}
-              {this.renderSquare(7, 3)}
-              {this.renderSquare(7, 4)}
-              {this.renderSquare(7, 5)}
-              {this.renderSquare(7, 6)}
-              {this.renderSquare(7, 7)}
-            </div>
+          <div className="board-row letter-row">
+            {this.renderUpperLetterColumnSquare('H')}
+            {this.renderUpperLetterColumnSquare('G')}
+            {this.renderUpperLetterColumnSquare('F')}
+            {this.renderUpperLetterColumnSquare('E')}
+            {this.renderUpperLetterColumnSquare('D')}
+            {this.renderUpperLetterColumnSquare('C')}
+            {this.renderUpperLetterColumnSquare('B')}
+            {this.renderUpperLetterColumnSquare('A')}
           </div>
-        );
-      }
-    
+  
+          <div className="board-row">
+            {this.renderNumberColumnSquare('1')}
+            {this.renderSquare(0, 0)}
+            {this.renderSquare(0, 1)}
+            {this.renderSquare(0, 2)}
+            {this.renderSquare(0, 3)}
+            {this.renderSquare(0, 4)}
+            {this.renderSquare(0, 5)}
+            {this.renderSquare(0, 6)}
+            {this.renderSquare(0, 7)}
+            {this.renderNumberColumnSquare('1')}
+          </div>
+  
+          <div className="board-row">
+          {this.renderNumberColumnSquare('2')}
+            {this.renderSquare(1, 0)}
+            {this.renderSquare(1, 1)}
+            {this.renderSquare(1, 2)}
+            {this.renderSquare(1, 3)}
+            {this.renderSquare(1, 4)}
+            {this.renderSquare(1, 5)}
+            {this.renderSquare(1, 6)}
+            {this.renderSquare(1, 7)}
+            {this.renderNumberColumnSquare('2')}
+          </div>
+  
+          <div className="board-row">
+          {this.renderNumberColumnSquare('3')}
+            {this.renderSquare(2, 0)}
+            {this.renderSquare(2, 1)}
+            {this.renderSquare(2, 2)}
+            {this.renderSquare(2, 3)}
+            {this.renderSquare(2, 4)}
+            {this.renderSquare(2, 5)}
+            {this.renderSquare(2, 6)}
+            {this.renderSquare(2, 7)}
+            {this.renderNumberColumnSquare('3')}
+          </div>
+  
+          <div className="board-row">
+          {this.renderNumberColumnSquare('4')}
+            {this.renderSquare(3, 0)}
+            {this.renderSquare(3, 1)}
+            {this.renderSquare(3, 2)}
+            {this.renderSquare(3, 3)}
+            {this.renderSquare(3, 4)}
+            {this.renderSquare(3, 5)}
+            {this.renderSquare(3, 6)}
+            {this.renderSquare(3, 7)}
+            {this.renderNumberColumnSquare('4')}
+          </div>
+  
+          <div className="board-row">
+          {this.renderNumberColumnSquare('5')}
+            {this.renderSquare(4, 0)}
+            {this.renderSquare(4, 1)}
+            {this.renderSquare(4, 2)}
+            {this.renderSquare(4, 3)}
+            {this.renderSquare(4, 4)}
+            {this.renderSquare(4, 5)}
+            {this.renderSquare(4, 6)}
+            {this.renderSquare(4, 7)}
+            {this.renderNumberColumnSquare('5')}
+          </div>
+  
+          <div className="board-row">
+          {this.renderNumberColumnSquare('6')}
+            {this.renderSquare(5, 0)}
+            {this.renderSquare(5, 1)}
+            {this.renderSquare(5, 2)}
+            {this.renderSquare(5, 3)}
+            {this.renderSquare(5, 4)}
+            {this.renderSquare(5, 5)}
+            {this.renderSquare(5, 6)}
+            {this.renderSquare(5, 7)}
+            {this.renderNumberColumnSquare('6')}
+          </div>
+  
+          <div className="board-row">
+          {this.renderNumberColumnSquare('7')}
+            {this.renderSquare(6, 0)}
+            {this.renderSquare(6, 1)}
+            {this.renderSquare(6, 2)}
+            {this.renderSquare(6, 3)}
+            {this.renderSquare(6, 4)}
+            {this.renderSquare(6, 5)}
+            {this.renderSquare(6, 6)}
+            {this.renderSquare(6, 7)}
+            {this.renderNumberColumnSquare('7')}
+          </div>
+  
+          <div className="board-row">
+          {this.renderNumberColumnSquare('8')}
+            {this.renderSquare(7, 0)}
+            {this.renderSquare(7, 1)}
+            {this.renderSquare(7, 2)}
+            {this.renderSquare(7, 3)}
+            {this.renderSquare(7, 4)}
+            {this.renderSquare(7, 5)}
+            {this.renderSquare(7, 6)}
+            {this.renderSquare(7, 7)}
+            {this.renderNumberColumnSquare('8')}
+          </div>
+  
+          <div className="board-row letter-row">
+            {this.renderLowerLetterColumnSquare('H')}
+            {this.renderLowerLetterColumnSquare('G')}
+            {this.renderLowerLetterColumnSquare('F')}
+            {this.renderLowerLetterColumnSquare('E')}
+            {this.renderLowerLetterColumnSquare('D')}
+            {this.renderLowerLetterColumnSquare('C')}
+            {this.renderLowerLetterColumnSquare('B')}
+            {this.renderLowerLetterColumnSquare('A')}
+          </div>
+
+        </div>
+      );
     }
+
+  }

@@ -12,9 +12,47 @@
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 60px;    
+  width: 60px;
 }
-  
+
+.letter-column-square{
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 60px;
+  height: 30px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 60px;
+}
+
+.letter-row{
+  margin-left: 28px;
+}
+
+.number-column-square{
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 60px;
+  height: 60px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 29px;
+}
+
+.letters{
+  margin-top: -15px;
+}
+
 .board-row:after {
   clear: both;
   content: "";
