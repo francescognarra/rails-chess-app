@@ -23,27 +23,16 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
   end
 
-  # def update
-  #   game = Game.find(params[:id])
-  #   game.update_attributes(game_params)
-  #   render json: game.as_json()
-  # end
-
   def update
     game = Game.find(params[:id])
-    game.update_attributes!(game_params)
-    game2 = game
-    render json: game2.as_json()
+    game.update_attributes(game_params)
+    render json: game.as_json()
   end
 
   private
 
-  def render_errors(game)
-    { errors: game.errors }
-  end
-
   def game_params
-    params.require(:game).permit({:board => []})
+    params.require(:game).permit(:name, :board)
   end
 
 end
