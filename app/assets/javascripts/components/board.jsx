@@ -1024,6 +1024,7 @@ class Board extends React.Component {
           this.setState({ board: boardClone });
         }
       }
+      this.updateBoard();
       this.gameIsOver(this.state.board);
     }
   
@@ -1212,12 +1213,21 @@ class Board extends React.Component {
       );
     }
 
-    componentWillMount() {
-      console.log(this.props.id)
-      axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
-      //axios.get('http://localhost:3000/games/' + this.props.id)
-      // .then((res) => console.log(res.data.board) )
+    updateBoard() {
+      axios.patch('http://localhost:3000/games/' + this.props.id, {board: this.state.board})
       .then((res) =>
+      //console.log(res) )
+      this.setState({
+        board: res.data.board
+      }) )
+      .catch((err) => console.log(err.response.data) );
+    }
+
+    componentWillMount() {
+      //axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
+      axios.get('http://localhost:3000/games/' + this.props.id)
+      .then((res) =>
+      //console.log(res) )
       this.setState({
         board: res.data.board
       }) )

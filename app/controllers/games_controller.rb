@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [ :update ]
 
   def index
     @game = Game.all
@@ -15,16 +16,6 @@ class GamesController < ApplicationController
 
   def create
     @game = current_user.games.create(game_params)
-    @game.update_attribute(:board, [
-      ['♖', '♘', '♗', '♔', '♕', '♗', '♘', '♖'],
-      ['♙', '♙', '♙', '♙', '♙', '♙', '♙', '♙'],
-      [nil, nil, nil, nil, nil, nil, nil, nil],
-      ['♖', '♘', '♗', '♔', '♕', '♗', '♘', '♖'],
-      ['♖', '♘', '♗', '♔', '♕', '♗', '♘', '♖'],
-      [nil, nil, nil, nil, nil, nil, nil, nil],
-      ['♙', '♙', '♙', '♙', '♙', '♙', '♙', '♙'],
-      ['♜', '♞', '♝', '♚', '♛', '♝', '♞', '♜']
-    ])
     redirect_to edit_game_path(@game)
   end
 
@@ -32,10 +23,27 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
   end
 
+  # def update
+  #   game = Game.find(params[:id])
+  #   game.update_attributes(game_params)
+  #   render json: game.as_json()
+  # end
+
+  def update
+    game = Game.find(params[:id])
+    game.update_attributes!(game_params)
+    game2 = game
+    render json: game2.as_json()
+  end
+
   private
 
+  def render_errors(game)
+    { errors: game.errors }
+  end
+
   def game_params
-    params.require(:game).permit(:name)
+    params.require(:game).permit({:board => []})
   end
 
 end
