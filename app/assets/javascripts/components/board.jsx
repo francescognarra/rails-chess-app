@@ -1214,14 +1214,14 @@ class Board extends React.Component {
     }
 
     updateBoard() {
-      axios.patch('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id, {board: this.state.board})
-      //axios.patch('http://localhost:3000/games/' + this.props.id, {board: this.state.board})
-      .then((res) =>
-      //console.log(res) )
-      this.setState({
-        board: res.data.board
-      }) )
-      .catch((err) => console.log(err.response.data) );
+      // axios.patch('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id, {board: this.state.board})
+      // //axios.patch('http://localhost:3000/games/' + this.props.id, {board: this.state.board})
+      // .then((res) =>
+      // //console.log(res) )
+      // this.setState({
+      //   board: res.data.board
+      // }) )
+      // .catch((err) => console.log(err.response.data) );
     }
 
     componentWillMount() {
