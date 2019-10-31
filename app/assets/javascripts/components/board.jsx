@@ -1214,7 +1214,8 @@ class Board extends React.Component {
     }
 
     updateBoard() {
-      axios.patch('http://localhost:3000/games/' + this.props.id, {board: this.state.board})
+      axios.patch('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id, {board: this.state.board})
+      //axios.patch('http://localhost:3000/games/' + this.props.id, {board: this.state.board})
       .then((res) =>
       //console.log(res) )
       this.setState({
@@ -1224,8 +1225,8 @@ class Board extends React.Component {
     }
 
     componentWillMount() {
-      //axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
-      axios.get('http://localhost:3000/games/' + this.props.id)
+      axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
+      //axios.get('http://localhost:3000/games/' + this.props.id)
       .then((res) =>
       //console.log(res) )
       this.setState({
