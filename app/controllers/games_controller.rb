@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [ :update ]
+  
 
   def index
     @game = Game.all
@@ -32,7 +33,7 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:name, board: [])
+    params.require(:game).permit(:name, :board)
   end
 
 end
