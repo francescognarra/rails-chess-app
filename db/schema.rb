@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2019_10_25_001914) do
   enable_extension "plpgsql"
 
   create_table "games", force: :cascade do |t|
-    t.text "board", default: [["♖", "♘", "♗", "♔", "♕", "♗", "♘", "♖"], ["♙", "♙", "♙", "♙", "♙", "♙", "♙", "♙"], [nil, nil, nil, nil, nil, nil, nil, nil], [nil, nil, nil, nil, nil, nil, nil, nil], [nil, nil, nil, nil, nil, nil, nil, nil], [nil, nil, nil, nil, nil, nil, nil, nil], ["♟", "♟", "♟", "♟", "♟", "♟", "♟", "♟"], ["♜", "♞", "♝", "♚", "♛", "♝", "♞", "♜"]], array: true
+    t.text "board", default: [["♖", "♘", "♗", "♔", "♕", "♗", "♘", "♖"], ["♙", "♙", "♙", "♙", "♙", "♙", "♙", "♙"], ["", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", ""], ["♟", "♟", "♟", "♟", "♟", "♟", "♟", "♟"], ["♜", "♞", "♝", "♚", "♛", "♝", "♞", "♜"]], array: true
     t.string "name"
     t.integer "user_id"
     t.datetime "created_at", null: false
