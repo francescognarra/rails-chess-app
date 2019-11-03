@@ -1233,6 +1233,23 @@ class Board extends React.Component {
       .catch((err) => console.log(err.response.data) );
     }
 
+    requestBoardFromDataBase() {
+      axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
+      //axios.get('http://localhost:3000/games/' + this.props.id)
+      .then((res) =>
+      this.setState({
+        board: res.data.board
+      }), 
+      console.log("the board was updated"))
+      .catch((err) => console.log(err.response.data) );
+    }
+
+    componentDidMount() {
+      this.interval = setInterval(() => {
+        this.requestBoardFromDataBase()
+      }, 3000);
+    }    
+
     render() {
       return (
         <div>
