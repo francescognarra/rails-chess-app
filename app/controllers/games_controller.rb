@@ -23,18 +23,6 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
   end
 
-  # def update
-  #   game = Game.find(params[:id])
-  #   new_board = []
-  #   board_param.each do |row|
-  #     row.each do |element|
-  #       new_board.push(element)
-  #     end
-  #   end
-  #   game.update_attribute(:board, new_board[1])
-  #   render json: game.as_json()
-  # end
-
   def update
     game = Game.find(params[:id])
     new_board = []
@@ -43,9 +31,7 @@ class GamesController < ApplicationController
         new_board.push(element)
       end
     end
-    puts "THIS IS THE BOARD_PARAM"
-    puts board_param.inspect
-    #game.update_attribute(:board, board_param[1])
+    game.update_attribute(:board, new_board[1])
     render json: game.as_json()
   end
 
