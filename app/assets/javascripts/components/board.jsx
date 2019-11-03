@@ -6,10 +6,10 @@ class Board extends React.Component {
         board: [
           ['♖', '♘', '♗', '♔', '♕', '♗', '♘', '♖'],
           ['♙', '♙', '♙', '♙', '♙', '♙', '♙', '♙'],
-          [null, null, null, null, null, null, null, null],
-          [null, null, null, null, null, null, null, null],
-          [null, null, null, null, null, null, null, null],
-          [null, null, null, null, null, null, null, null],
+          ['', '', '', '', '', '', '', ''],
+          ['', '', '', '', '', '', '', ''],
+          ['', '', '', '', '', '', '', ''],
+          ['', '', '', '', '', '', '', ''],
           ['♟', '♟', '♟', '♟', '♟', '♟', '♟', '♟'],
           ['♜', '♞', '♝', '♚', '♛', '♝', '♞', '♜']
         ],
@@ -41,7 +41,7 @@ class Board extends React.Component {
         }
       }
       if(!this.state.blackTeamsTurn || this.state.blackTeamsTurn) {
-        if(this.state.board[rowInx][colInx] === null) {
+        if(this.state.board[rowInx][colInx] === '') {
           this.setState({
             selPce: this.state.board[rowInx][colInx]
           });
@@ -168,12 +168,12 @@ class Board extends React.Component {
       if(this.state.blackTeamsTurn && !this.blackPieces().includes(boardClone[rowInx][colInx])) {
         if(this.state.selPceRowInx === 6 && !this.state.board[5][colInx] && !this.state.board[4][colInx]) {
           if(rowInx === 4 && colInx === this.state.selPceColInx) {
-            boardClone[this.state.selPceRowInx][colInx] = null;
+            boardClone[this.state.selPceRowInx][colInx] = '';
           }
         }
         if(rowInx === this.state.selPceRowInx - 1 && colInx === this.state.selPceColInx) {
           if(!boardClone[rowInx][colInx]) {
-            boardClone[this.state.selPceRowInx][colInx] = null;
+            boardClone[this.state.selPceRowInx][colInx] = '';
           }
         }
       }
@@ -203,12 +203,12 @@ class Board extends React.Component {
         if(rowInx === this.state.selPceRowInx - 1) {
           if(colInx === this.state.selPceColInx + 1) {
             if(boardClone[rowInx][colInx]) {
-              boardClone[this.state.selPceRowInx][colInx - 1] = null;
+              boardClone[this.state.selPceRowInx][colInx - 1] = '';
             }
           }
           if(colInx === this.state.selPceColInx - 1) {
             if(boardClone[rowInx][colInx]) {
-              boardClone[this.state.selPceRowInx][colInx + 1] = null;
+              boardClone[this.state.selPceRowInx][colInx + 1] = '';
             }
           }
         }
@@ -244,12 +244,12 @@ class Board extends React.Component {
       if(!this.state.blackTeamsTurn && !this.whitePieces().includes(boardClone[rowInx][colInx])) {
         if(this.state.selPceRowInx === 1 && !this.state.board[2][colInx] && !this.state.board[3][colInx]) {
           if(rowInx === 3 && colInx === this.state.selPceColInx) {
-            boardClone[this.state.selPceRowInx][colInx] = null;
+            boardClone[this.state.selPceRowInx][colInx] = '';
           }
         }
         if(rowInx === this.state.selPceRowInx + 1 && colInx === this.state.selPceColInx) {
           if(!boardClone[rowInx][colInx]) {
-            boardClone[this.state.selPceRowInx][colInx] = null;
+            boardClone[this.state.selPceRowInx][colInx] = '';
           }
         }
       }
@@ -279,12 +279,12 @@ class Board extends React.Component {
         if(rowInx === this.state.selPceRowInx + 1) {
           if(colInx === this.state.selPceColInx + 1) {
             if(boardClone[rowInx][colInx]) {
-              boardClone[this.state.selPceRowInx][colInx - 1] = null;
+              boardClone[this.state.selPceRowInx][colInx - 1] = '';
             }
           }
           if(colInx === this.state.selPceColInx - 1) {
             if(boardClone[rowInx][colInx]) {
-              boardClone[this.state.selPceRowInx][colInx + 1] = null;
+              boardClone[this.state.selPceRowInx][colInx + 1] = '';
             }
           }
         }
@@ -299,24 +299,24 @@ class Board extends React.Component {
           if(colInx === this.state.selPceColInx - (rowInx - this.state.selPceRowInx)) {
             if(rowInx < this.state.selPceRowInx) {
               if(this.checkNorthEastPath(rowInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
             if(rowInx > this.state.selPceRowInx) {
               if(this.checkSouthWestPath(rowInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
           }
           if(colInx === this.state.selPceColInx + (rowInx - this.state.selPceRowInx)) {
             if(rowInx < this.state.selPceRowInx) {
               if(this.checkNorthWestPath(rowInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
             if(rowInx > this.state.selPceRowInx) {
               if(this.checkSouthEastPath(rowInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
           }
@@ -327,24 +327,24 @@ class Board extends React.Component {
           if(colInx === this.state.selPceColInx - (rowInx - this.state.selPceRowInx)) {
             if(rowInx < this.state.selPceRowInx) {
               if(this.checkNorthEastPath(rowInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
             if(rowInx > this.state.selPceRowInx) {
               if(this.checkSouthWestPath(rowInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
           }
           if(colInx === this.state.selPceColInx + (rowInx - this.state.selPceRowInx)) {
             if(rowInx < this.state.selPceRowInx) {
               if(this.checkNorthWestPath(rowInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
             if(rowInx > this.state.selPceRowInx) {
               if(this.checkSouthEastPath(rowInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
           }
@@ -445,48 +445,48 @@ class Board extends React.Component {
           if(colInx === this.state.selPceColInx - (rowInx - this.state.selPceRowInx)) {
             if(rowInx < this.state.selPceRowInx) {
               if(this.checkNorthEastPath(rowInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
             if(rowInx > this.state.selPceRowInx) {
               if(this.checkSouthWestPath(rowInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
           }
           if(colInx === this.state.selPceColInx + (rowInx - this.state.selPceRowInx)) {
             if(rowInx < this.state.selPceRowInx) {
               if(this.checkNorthWestPath(rowInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
             if(rowInx > this.state.selPceRowInx) {
               if(this.checkSouthEastPath(rowInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
           }
           if(rowInx === this.state.selPceRowInx) {
             if(colInx < this.state.selPceColInx) {
               if(this.checkWestPath(colInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
             if(colInx > this.state.selPceColInx) {
               if(this.checkEastPath(colInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
           }
           if(colInx === this.state.selPceColInx) {
             if(rowInx < this.state.selPceRowInx) {
               if(this.checkNorthPath(rowInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
             if(rowInx > this.state.selPceRowInx) {
               if(this.checkSouthPath(rowInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
           }
@@ -497,48 +497,48 @@ class Board extends React.Component {
           if(colInx === this.state.selPceColInx - (rowInx - this.state.selPceRowInx)) {
             if(rowInx < this.state.selPceRowInx) {
               if(this.checkNorthEastPath(rowInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
             if(rowInx > this.state.selPceRowInx) {
               if(this.checkSouthWestPath(rowInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
           }
           if(colInx === this.state.selPceColInx + (rowInx - this.state.selPceRowInx)) {
             if(rowInx < this.state.selPceRowInx) {
               if(this.checkNorthWestPath(rowInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
             if(rowInx > this.state.selPceRowInx) {
               if(this.checkSouthEastPath(rowInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
           }
           if(rowInx === this.state.selPceRowInx) {
             if(colInx < this.state.selPceColInx) {
               if(this.checkWestPath(colInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
             if(colInx > this.state.selPceColInx) {
               if(this.checkEastPath(colInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
           }
           if(colInx === this.state.selPceColInx) {
             if(rowInx < this.state.selPceRowInx) {
               if(this.checkNorthPath(rowInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
             if(rowInx > this.state.selPceRowInx) {
               if(this.checkSouthPath(rowInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
           }
@@ -710,12 +710,12 @@ class Board extends React.Component {
           if(!this.state.blackTeamsTurn && !this.whitePieces().includes(boardClone[rowInx][colInx])) {
             if(colInx === this.state.selPceColInx - 1 || colInx === this.state.selPceColInx + 1) {
               if(rowInx === this.state.selPceRowInx - 2 || rowInx === this.state.selPceRowInx + 2) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
             if(colInx === this.state.selPceColInx - 2 || colInx === this.state.selPceColInx + 2) {
               if(rowInx === this.state.selPceRowInx - 1 || rowInx === this.state.selPceRowInx + 1) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
           }
@@ -724,12 +724,12 @@ class Board extends React.Component {
           if(this.state.blackTeamsTurn && !this.blackPieces().includes(boardClone[rowInx][colInx])) {
             if(colInx === this.state.selPceColInx - 1 || colInx === this.state.selPceColInx + 1) {
               if(rowInx === this.state.selPceRowInx - 2 || rowInx === this.state.selPceRowInx + 2) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
             if(colInx === this.state.selPceColInx - 2 || colInx === this.state.selPceColInx + 2) {
               if(rowInx === this.state.selPceRowInx - 1 || rowInx === this.state.selPceRowInx + 1) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
           }
@@ -788,7 +788,7 @@ class Board extends React.Component {
         if(!this.state.blackTeamsTurn && !this.whitePieces().includes(boardClone[rowInx][colInx])) {
           if(rowInx === this.state.selPceRowInx - 1 || rowInx === this.state.selPceRowInx + 1 || rowInx === this.state.selPceRowInx) {
             if(colInx === this.state.selPceColInx - 1 || colInx === this.state.selPceColInx + 1 || colInx === this.state.selPceColInx) {
-              boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+              boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
             }
           }
         }
@@ -797,7 +797,7 @@ class Board extends React.Component {
         if(this.state.blackTeamsTurn && !this.blackPieces().includes(boardClone[rowInx][colInx])) {
           if(rowInx === this.state.selPceRowInx - 1 || rowInx === this.state.selPceRowInx + 1 || rowInx === this.state.selPceRowInx) {
             if(colInx === this.state.selPceColInx - 1 || colInx === this.state.selPceColInx + 1 || colInx === this.state.selPceColInx) {
-              boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+              boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
             }
           }
         }
@@ -841,24 +841,24 @@ class Board extends React.Component {
           if(rowInx === this.state.selPceRowInx) {
             if(colInx < this.state.selPceColInx) {
               if(this.checkWestPath(colInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
             if(colInx > this.state.selPceColInx) {
               if(this.checkEastPath(colInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
           }
           if(colInx === this.state.selPceColInx) {
             if(rowInx < this.state.selPceRowInx) {
               if(this.checkNorthPath(rowInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
             if(rowInx > this.state.selPceRowInx) {
               if(this.checkSouthPath(rowInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
           }
@@ -869,24 +869,24 @@ class Board extends React.Component {
           if(rowInx === this.state.selPceRowInx) {
             if(colInx < this.state.selPceColInx) {
               if(this.checkWestPath(colInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
             if(colInx > this.state.selPceColInx) {
               if(this.checkEastPath(colInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
           }
           if(colInx === this.state.selPceColInx) {
             if(rowInx < this.state.selPceRowInx) {
               if(this.checkNorthPath(rowInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
             if(rowInx > this.state.selPceRowInx) {
               if(this.checkSouthPath(rowInx)) {
-                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = null;
+                boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
               }
             }
           }
@@ -1217,7 +1217,6 @@ class Board extends React.Component {
       //axios.patch('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id, {board: this.state.board})
       axios.patch('http://localhost:3000/games/' + this.props.id, {board: this.state.board})
       .then((res) =>
-      //console.log(res) )
       this.setState({
         board: res.data.board
       }) )
@@ -1228,7 +1227,6 @@ class Board extends React.Component {
       //axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
       axios.get('http://localhost:3000/games/' + this.props.id)
       .then((res) =>
-      //console.log(res) )
       this.setState({
         board: res.data.board
       }) )
