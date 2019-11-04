@@ -1232,13 +1232,7 @@ class Board extends React.Component {
     }
 
     componentWillMount() {
-      axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
-      //axios.get('http://localhost:3000/games/' + this.props.id)
-      .then((res) =>
-      this.setState({
-        board: res.data.board
-      }) )
-      .catch((err) => console.log(err.response.data) );
+      this.requestBoardFromDataBase()
     }
 
     requestBoardFromDataBase() {
@@ -1255,8 +1249,12 @@ class Board extends React.Component {
     componentDidMount() {
       this.interval = setInterval(() => {
         this.requestBoardFromDataBase()
-      }, 2000);
-    }    
+      }, 1500);
+    }
+
+    componentWillUnmount() {
+      clearInterval(this.interval);
+    }
 
     render() {
       return (
