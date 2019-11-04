@@ -1058,6 +1058,7 @@ class Board extends React.Component {
       this.setState({
         board: boardClone
       });
+      this.updateBoard()
     }
   
     promoteToWhiteBishop(rowInx, colInx) {
@@ -1066,6 +1067,7 @@ class Board extends React.Component {
       this.setState({
         board: boardClone
       });
+      this.updateBoard()
     }
   
     promoteToWhiteKnight(rowInx, colInx) {
@@ -1074,6 +1076,7 @@ class Board extends React.Component {
       this.setState({
         board: boardClone
       });
+      this.updateBoard()
     }
   
     promoteToWhiteQueen(rowInx, colInx) {
@@ -1082,6 +1085,7 @@ class Board extends React.Component {
       this.setState({
         board: boardClone
       });
+      this.updateBoard()
     }
   
     promoteToBlackRook(rowInx, colInx) {
@@ -1090,6 +1094,7 @@ class Board extends React.Component {
       this.setState({
         board: boardClone
       });
+      this.updateBoard()
     }
   
     promoteToBlackBishop(rowInx, colInx) {
@@ -1098,6 +1103,7 @@ class Board extends React.Component {
       this.setState({
         board: boardClone
       });
+      this.updateBoard()
     }
   
     promoteToBlackKnight(rowInx, colInx) {
@@ -1106,6 +1112,7 @@ class Board extends React.Component {
       this.setState({
         board: boardClone
       });
+      this.updateBoard()
     }
   
     promoteToBlackQueen(rowInx, colInx) {
@@ -1114,6 +1121,7 @@ class Board extends React.Component {
       this.setState({
         board: boardClone
       });
+      this.updateBoard()
     }
   
     renderSquare(rowInx, colInx) {
@@ -1247,7 +1255,7 @@ class Board extends React.Component {
     componentDidMount() {
       this.interval = setInterval(() => {
         this.requestBoardFromDataBase()
-      }, 3000);
+      }, 2000);
     }    
 
     render() {
