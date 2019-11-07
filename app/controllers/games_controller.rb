@@ -26,13 +26,9 @@ class GamesController < ApplicationController
 
   def update
     game = Game.find(params[:id])
-    new_board = []
-    board_param.each do |row|
-      row.each do |element|
-        new_board.push(element)
-      end
+    board_param.each do |element|
+      game.update_attribute(:board, element[1])
     end
-    game.update_attribute(:board, new_board[1])
     render json: game.as_json()
   end
 
