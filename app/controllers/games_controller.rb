@@ -26,9 +26,7 @@ class GamesController < ApplicationController
 
   def update
     game = Game.find(params[:id])
-    board_param.each do |element|
-      game.update_attribute(:board, element[1])
-    end
+    game.update_attribute(:board, board_param["board"])
     render json: game.as_json()
   end
 
