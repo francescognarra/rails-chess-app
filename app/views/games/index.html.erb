@@ -1,0 +1,11 @@
+<%= link_to 'Return to homepage', root_path %>
+<br />
+<%= link_to "Start a new game", new_game_path %>
+<br /><br />
+
+<h3>Pick a chess match to join</h3>
+
+<% @game.each do |game| %>
+  <%= link_to game.name,  edit_game_path(game)%>
+  <br/>
+<% end %>
