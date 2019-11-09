@@ -10,7 +10,7 @@ RSpec.describe GamesController, type: :controller do
       expect(response).to have_http_status(:success)
     end
 
-    it "should require users to be logged in" do
+    it "should require a user to be logged in" do
       get :index
       expect(response).to redirect_to new_user_session_path
     end
@@ -24,7 +24,7 @@ RSpec.describe GamesController, type: :controller do
       expect(response).to have_http_status(:success)
     end
 
-    it "should require users be logged in" do
+    it "should require a user be logged in" do
       game = FactoryBot.create(:game)
       get :edit, params: { id: game.id }
       expect(response).to redirect_to new_user_session_path
@@ -37,6 +37,20 @@ RSpec.describe GamesController, type: :controller do
       sign_in user
       post :create, params: { game: { name: 'name' } }
       expect(response).to have_http_status(:found)
+    end
+  end
+
+  describe "games#new action" do
+    it "should successfully show the page" do
+      user = FactoryBot.create(:user)
+      sign_in user
+      get :new
+      expect(response).to have_http_status(:success)
+    end
+
+    it "should require a user be logged in" do
+      get :new
+      expect(response).to redirect_to new_user_session_path
     end
   end
 
