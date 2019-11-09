@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [ :update ]
-  #before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def index
     @game = Game.all
