@@ -6,6 +6,6 @@
 <h3>Pick a chess match to join</h3>
 
 <% @game.each do |game| %>
-  <%= link_to game.name,  edit_game_path(game)%>
+  <%= link_to "Hosted by " + game.user.email,  edit_game_path(game)%>
   <br/>
 <% end %>
