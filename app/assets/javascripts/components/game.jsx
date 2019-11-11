@@ -1041,7 +1041,7 @@ class Game extends React.Component {
         this.setState({
           blackTeamWon: false
         });
-        this.deleteGame();
+        //this.deleteGame();
       }
     }
     if(allPieces.includes('♚')) {
@@ -1049,7 +1049,7 @@ class Game extends React.Component {
         this.setState({
           blackTeamWon: true
         });
-        this.deleteGame();
+        //this.deleteGame();
       }
     }
   }
