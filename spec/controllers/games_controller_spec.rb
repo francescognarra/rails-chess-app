@@ -98,6 +98,7 @@ RSpec.describe GamesController, type: :controller do
       game = FactoryBot.create(:game)
       sign_in game.user
       delete :destroy, params: { id: game.id }
+      expect(response).to redirect_to root_path
       game = Game.find_by_id(game.id)
       expect(game).to eq nil
     end

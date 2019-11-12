@@ -1235,7 +1235,6 @@ class Game extends React.Component {
       board: res.data.board
     }), 
     console.log("the board was updated"))
-    .catch((err) => console.log(err.response.data) );
   }
 
   componentDidMount() {
