@@ -1,7 +1,4 @@
-<%= link_to 'Return to homepage', root_path %>
+<%= link_to 'End match and return to homepage', game_path(@game), method: :delete %>
 <br />
-<%= link_to 'Go to games lobby', games_path %>
-<br />
-<%= link_to 'End match and return to home', game_path(@game), method: :delete %>
 
 <%= react_component("Game", {id: @game.id}) %>
