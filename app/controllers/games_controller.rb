@@ -33,7 +33,7 @@ class GamesController < ApplicationController
   def destroy
     game = Game.find_by_id(params[:id])
     redirect_to root_path
-    game.destroy
+    game.destroy if game
   end
 
   private
