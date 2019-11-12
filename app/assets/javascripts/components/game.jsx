@@ -1041,7 +1041,6 @@ class Game extends React.Component {
         this.setState({
           blackTeamWon: false
         });
-        //this.deleteGame();
       }
     }
     if(allPieces.includes('♚')) {
@@ -1049,7 +1048,6 @@ class Game extends React.Component {
         this.setState({
           blackTeamWon: true
         });
-        //this.deleteGame();
       }
     }
   }
@@ -1221,11 +1219,6 @@ class Game extends React.Component {
         value={number}
       />
     );
-  }
-
-  deleteGame() {
-    axios.delete(`https://chess-app-rails-andy-strube.herokuapp.com/games/` + this.props.id)
-    //axios.delete(`http://localhost:3000/games/` + this.props.id)
   }
 
   updateBoard() {
