@@ -1228,16 +1228,13 @@ class Game extends React.Component {
   }
 
   requestBoardFromDataBase() {
-    if(axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)) {
-    //if(axios.get('http://localhost:3000/games/' + this.props.id)) {
-      //axios.get('http://localhost:3000/games/' + this.props.id)
-      axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
+    axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
+    //axios.get('http://localhost:3000/games/' + this.props.id)
       .then((res) =>
         this.setState({
           board: res.data.board
         }),
       console.log("the board was updated"))
-    }
   }
 
   componentDidMount() {
