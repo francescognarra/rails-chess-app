@@ -17,7 +17,8 @@ class Game extends React.Component {
       blackTeamWon: null,
       selPce: null,
       selPceRowInx: null,
-      selPceColInx: null
+      selPceColInx: null,
+      updateTime: 0
     }
   }
 
@@ -1227,14 +1228,25 @@ class Game extends React.Component {
     .catch((err) => console.log(err.response.data) );
   }
 
+  vetUpdates(res) {
+    let newTime = Number(res.data.updated_at[11] + res.data.updated_at[12]
+    + res.data.updated_at[14] + res.data.updated_at[15] + res.data.updated_at[17]
+    + res.data.updated_at[18]);
+    if(newTime > this.state.updateTime) {
+      this.setState({
+        board: res.data.board,
+        updateTime: newTime
+      });
+      console.log("The board was updated");
+    }
+  }
+
   requestBoardFromDataBase() {
     axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
     //axios.get('http://localhost:3000/games/' + this.props.id)
-      .then((res) =>
-        this.setState({
-          board: res.data.board
-        }),
-      console.log("the board was updated"))
+    .then((res) =>
+      this.vetUpdates(res)
+    )
   }
 
   componentDidMount() {
