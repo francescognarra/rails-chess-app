@@ -1223,27 +1223,39 @@ class Game extends React.Component {
   }
 
   updateBoard() {
-    axios.patch('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id, {board: this.state.board})
-    //axios.patch('http://localhost:3000/games/' + this.props.id, {board: this.state.board})
+    //axios.patch('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id, {board: this.state.board})
+    axios.patch('http://localhost:3000/games/' + this.props.id, {board: this.state.board})
     .catch((err) => console.log(err.response.data) );
   }
 
   vetUpdates(res) {
-    let newTime = Number(res.data.updated_at[11] + res.data.updated_at[12]
-    + res.data.updated_at[14] + res.data.updated_at[15] + res.data.updated_at[17]
-    + res.data.updated_at[18]);
+    let newTime = Number(
+      res.data.updated_at[0] +
+      res.data.updated_at[1] +
+      res.data.updated_at[2] +
+      res.data.updated_at[3] +
+      res.data.updated_at[5] +
+      res.data.updated_at[6] +
+      res.data.updated_at[8] +
+      res.data.updated_at[9] +     
+      res.data.updated_at[11] +
+      res.data.updated_at[12] +
+      res.data.updated_at[14] +
+      res.data.updated_at[15] +
+      res.data.updated_at[17] +
+      res.data.updated_at[18]
+    );
     if(newTime > this.state.updateTime) {
       this.setState({
         board: res.data.board,
         updateTime: newTime
       });
-      console.log("The board was updated");
     }
   }
 
   requestBoardFromDataBase() {
-    axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
-    //axios.get('http://localhost:3000/games/' + this.props.id)
+    //axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
+    axios.get('http://localhost:3000/games/' + this.props.id)
     .then((res) =>
       this.vetUpdates(res)
     )
