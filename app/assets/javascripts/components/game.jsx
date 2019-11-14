@@ -1231,14 +1231,14 @@ class Game extends React.Component {
   vetUpdates(res) {
     console.log(res.data.updated_at);
     let newTime = Number(
-      res.data.updated_at[0] +
-      res.data.updated_at[1] +
-      res.data.updated_at[2] +
-      res.data.updated_at[3] +
-      res.data.updated_at[5] +
-      res.data.updated_at[6] +
-      res.data.updated_at[8] +
-      res.data.updated_at[9] +     
+      // res.data.updated_at[0] +
+      // res.data.updated_at[1] +
+      // res.data.updated_at[2] +
+      // res.data.updated_at[3] +
+      // res.data.updated_at[5] +
+      // res.data.updated_at[6] +
+      // res.data.updated_at[8] +
+      // res.data.updated_at[9] +     
       res.data.updated_at[11] +
       res.data.updated_at[12] +
       res.data.updated_at[14] +
