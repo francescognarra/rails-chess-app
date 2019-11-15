@@ -17,8 +17,7 @@ class Game extends React.Component {
       blackTeamWon: null,
       selPce: null,
       selPceRowInx: null,
-      selPceColInx: null,
-      updateTime: 0
+      selPceColInx: null
     }
   }
 
@@ -1069,7 +1068,6 @@ class Game extends React.Component {
         this.setState({ board: boardClone });
       }
     }
-    // this.updateBoard();
     this.gameIsOver(this.state.board);
   }
 
@@ -1267,40 +1265,27 @@ class Game extends React.Component {
   }
 
   updateBoard() {
-    axios.patch('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id, {board: this.state.board})
-    //axios.patch('http://localhost:3000/games/' + this.props.id, {board: this.state.board})
+    //axios.patch('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id, {board: this.state.board})
+    axios.patch('http://localhost:3000/games/' + this.props.id, {
+      board: this.state.board,
+      patcher_id: this.props.user_id
+    })
     .catch((err) => console.log(err.response.data) );
     console.log("A patch request was made");
   }
 
   vetUpdates(res) {
-    let newTime = Number(
-      res.data.updated_at[0] +
-      res.data.updated_at[1] +
-      res.data.updated_at[2] +
-      res.data.updated_at[3] +
-      res.data.updated_at[5] +
-      res.data.updated_at[6] +
-      res.data.updated_at[8] +
-      res.data.updated_at[9] +     
-      res.data.updated_at[11] +
-      res.data.updated_at[12] +
-      res.data.updated_at[14] +
-      res.data.updated_at[15] +
-      res.data.updated_at[17] +
-      res.data.updated_at[18]
-    );
-    if(newTime > this.state.updateTime) {
+    if(this.props.user_id !== res.data.patcher_id) {
       this.setState({
-        board: res.data.board,
-        updateTime: newTime
+        board: res.data.board
       });
+      console.log("An update from the database was made");
     }
   }
 
   requestBoardFromDataBase() {
-    axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
-    //axios.get('http://localhost:3000/games/' + this.props.id)
+    //axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
+    axios.get('http://localhost:3000/games/' + this.props.id)
     .then((res) =>
       this.vetUpdates(res)
     )
@@ -1312,8 +1297,18 @@ class Game extends React.Component {
     }, 1500);
   }
 
+  getInitialBoardConfiguration() {
+    //axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
+    axios.get('http://localhost:3000/games/' + this.props.id)
+    .then((res) =>
+      this.setState({
+        board: res.data.board
+      })
+    )
+  }
+
   componentWillMount() {
-    this.requestBoardFromDataBase()
+    this.getInitialBoardConfiguration();
   }
 
   componentWillUnmount() {

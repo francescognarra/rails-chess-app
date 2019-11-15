@@ -1,4 +1,4 @@
 <%= link_to 'End match and return to homepage', game_path(@game), method: :delete %>
 <br />
 
-<%= react_component("Game", {id: @game.id}) %>
+<%= react_component("Game", {id: @game.id, user_id: @game.user.id}) %>
