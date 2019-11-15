@@ -150,6 +150,7 @@ class Game extends React.Component {
           this.setState({
             blackTeamsTurn: !this.state.blackTeamsTurn
           });
+          this.updateBoard();
         }
       }
       if(rowInx === this.state.selPceRowInx - 1 && colInx === this.state.selPceColInx) {
@@ -158,6 +159,7 @@ class Game extends React.Component {
           this.setState({
             blackTeamsTurn: !this.state.blackTeamsTurn
           });
+          this.updateBoard();
         }
       }
     }
@@ -191,6 +193,7 @@ class Game extends React.Component {
             this.setState({
               blackTeamsTurn: !this.state.blackTeamsTurn
             });
+            this.updateBoard();
           }
         }
       }
@@ -226,6 +229,7 @@ class Game extends React.Component {
           this.setState({
             blackTeamsTurn: !this.state.blackTeamsTurn
           });
+          this.updateBoard();
         }
       } 
       if(rowInx === this.state.selPceRowInx + 1 && colInx === this.state.selPceColInx) {
@@ -234,6 +238,7 @@ class Game extends React.Component {
           this.setState({
             blackTeamsTurn: !this.state.blackTeamsTurn
           });
+          this.updateBoard();
         }
       }
     }
@@ -267,6 +272,7 @@ class Game extends React.Component {
             this.setState({
               blackTeamsTurn: !this.state.blackTeamsTurn
             });
+            this.updateBoard();
           }
         }
       }
@@ -365,6 +371,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
           if(rowInx > this.state.selPceRowInx) {
@@ -373,6 +380,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
         }
@@ -383,6 +391,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
           if(rowInx > this.state.selPceRowInx) {
@@ -391,6 +400,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
         }
@@ -405,6 +415,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
           if(rowInx > this.state.selPceRowInx) {
@@ -413,6 +424,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
         }
@@ -423,6 +435,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
           if(rowInx > this.state.selPceRowInx) {
@@ -431,6 +444,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
         }
@@ -559,6 +573,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
           if(rowInx > this.state.selPceRowInx) {
@@ -567,6 +582,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
         }
@@ -577,6 +593,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
           if(rowInx > this.state.selPceRowInx) {
@@ -585,6 +602,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
         }
@@ -595,6 +613,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
           if(colInx > this.state.selPceColInx) {
@@ -603,6 +622,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
         }
@@ -613,6 +633,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
           if(rowInx > this.state.selPceRowInx) {
@@ -621,6 +642,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
         }
@@ -635,6 +657,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
           if(rowInx > this.state.selPceRowInx) {
@@ -643,6 +666,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
         }
@@ -653,6 +677,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
           if(rowInx > this.state.selPceRowInx) {
@@ -661,6 +686,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
         }
@@ -671,6 +697,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
           if(colInx > this.state.selPceColInx) {
@@ -679,6 +706,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
         }
@@ -689,6 +717,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
           if(rowInx > this.state.selPceRowInx) {
@@ -697,6 +726,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
         }
@@ -748,6 +778,7 @@ class Game extends React.Component {
             this.setState({
               blackTeamsTurn: !this.state.blackTeamsTurn
             });
+            this.updateBoard();
           }
         } 
         if(colInx === this.state.selPceColInx - 2 || colInx === this.state.selPceColInx + 2) {
@@ -756,6 +787,7 @@ class Game extends React.Component {
             this.setState({
               blackTeamsTurn: !this.state.blackTeamsTurn
             });
+            this.updateBoard();
           }
         }
       }
@@ -768,6 +800,7 @@ class Game extends React.Component {
             this.setState({
               blackTeamsTurn: !this.state.blackTeamsTurn
             });
+            this.updateBoard();
           }
         } 
         if(colInx === this.state.selPceColInx - 2 || colInx === this.state.selPceColInx + 2) {
@@ -776,6 +809,7 @@ class Game extends React.Component {
             this.setState({
               blackTeamsTurn: !this.state.blackTeamsTurn
             });
+            this.updateBoard();
           }
         }
       }
@@ -816,6 +850,7 @@ class Game extends React.Component {
             this.setState({
               blackTeamsTurn: !this.state.blackTeamsTurn
             });
+            this.updateBoard();
           }
         }
       }
@@ -828,6 +863,7 @@ class Game extends React.Component {
             this.setState({
               blackTeamsTurn: !this.state.blackTeamsTurn
             });
+            this.updateBoard();
           }
         }
       }
@@ -907,6 +943,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
           if(colInx > this.state.selPceColInx) {
@@ -915,6 +952,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
         }
@@ -925,6 +963,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
           if(rowInx > this.state.selPceRowInx) {
@@ -933,6 +972,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
         }
@@ -947,6 +987,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
           if(colInx > this.state.selPceColInx) {
@@ -955,6 +996,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
         }
@@ -965,6 +1007,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
           if(rowInx > this.state.selPceRowInx) {
@@ -973,6 +1016,7 @@ class Game extends React.Component {
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
+              this.updateBoard();
             }
           }
         }
@@ -1025,7 +1069,7 @@ class Game extends React.Component {
         this.setState({ board: boardClone });
       }
     }
-    this.updateBoard();
+    // this.updateBoard();
     this.gameIsOver(this.state.board);
   }
 
@@ -1223,13 +1267,13 @@ class Game extends React.Component {
   }
 
   updateBoard() {
-    axios.patch('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id, {board: this.state.board})
-    //axios.patch('http://localhost:3000/games/' + this.props.id, {board: this.state.board})
+    //axios.patch('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id, {board: this.state.board})
+    axios.patch('http://localhost:3000/games/' + this.props.id, {board: this.state.board})
     .catch((err) => console.log(err.response.data) );
+    console.log("A patch request was made");
   }
 
   vetUpdates(res) {
-    console.log(res.data.updated_at);
     let newTime = Number(
       res.data.updated_at[0] +
       res.data.updated_at[1] +
@@ -1246,7 +1290,6 @@ class Game extends React.Component {
       res.data.updated_at[17] +
       res.data.updated_at[18]
     );
-    console.log(newTime);
     if(newTime > this.state.updateTime) {
       this.setState({
         board: res.data.board,
@@ -1256,8 +1299,8 @@ class Game extends React.Component {
   }
 
   requestBoardFromDataBase() {
-    axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
-    //axios.get('http://localhost:3000/games/' + this.props.id)
+    //axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
+    axios.get('http://localhost:3000/games/' + this.props.id)
     .then((res) =>
       this.vetUpdates(res)
     )
