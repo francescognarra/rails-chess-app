@@ -2,7 +2,9 @@
 <br />
 
 <%= current_user.email %>
-<%= "The current_user id is " + current_user.id %>
-<%= "The patcher id is " + @game.patcher_id %>
+<br />
+<%= "The current_user id is #{current_user.id}" %>
+<br />
+<%= "The patcher id is #{@game.patcher_id}" %>
 
 <%= react_component("Game", {id: @game.id, user_id: current_user.id}) %>
