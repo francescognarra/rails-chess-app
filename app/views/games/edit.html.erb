@@ -2,5 +2,7 @@
 <br />
 
 <%= current_user.email %>
+<%= current_user.id %>
+<%= @game.patcher_id %>
 
 <%= react_component("Game", {id: @game.id, user_id: @game.user.id}) %>
