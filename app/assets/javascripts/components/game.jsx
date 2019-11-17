@@ -1334,6 +1334,7 @@ class Game extends React.Component {
       }
     }
     this.gameIsOver(this.state.board);
+    console.log(this.state.history.length);
   }
 
   // I plan on updating this function to detect checkmates at a later time
@@ -1530,8 +1531,8 @@ class Game extends React.Component {
   }
 
   updateBoard() {
-    axios.patch('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id, {
-    //axios.patch('http://localhost:3000/games/' + this.props.id, {
+    //axios.patch('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id, {
+    axios.patch('http://localhost:3000/games/' + this.props.id, {
       board: this.state.board
     })
     .catch((err) => console.log(err.response.data) );
@@ -1553,14 +1554,14 @@ class Game extends React.Component {
         this.setState({
           board: res.data.board
         });
-        console.log("An update from the database was made");
+        console.log(this.state.history[this.state.history.length - 2]);
       }
     }
   }
 
   requestBoardFromDataBase() {
-    axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
-    //axios.get('http://localhost:3000/games/' + this.props.id)
+    //axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
+    axios.get('http://localhost:3000/games/' + this.props.id)
     .then((res) =>
       this.vetUpdates(res)
     )
