@@ -17,7 +17,8 @@ class Game extends React.Component {
       blackTeamWon: null,
       selPce: null,
       selPceRowInx: null,
-      selPceColInx: null
+      selPceColInx: null,
+      history: []
     }
   }
 
@@ -146,6 +147,12 @@ class Game extends React.Component {
       if(this.state.selPceRowInx === 6 && !this.state.board[5][colInx] && !this.state.board[4][colInx]) {
         if(rowInx === 4 && colInx === this.state.selPceColInx) {
           boardClone[rowInx][colInx] = '♟';
+          let updatedHistory = this.state.history;
+          updatedHistory.push(this.state.board);
+          this.setState({
+            history: updatedHistory
+          });
+          console.log(this.state.history[this.state.history.length - 2]);
           this.setState({
             blackTeamsTurn: !this.state.blackTeamsTurn
           });
@@ -155,6 +162,12 @@ class Game extends React.Component {
       if(rowInx === this.state.selPceRowInx - 1 && colInx === this.state.selPceColInx) {
         if(!boardClone[rowInx][colInx]) {
           boardClone[rowInx][colInx] = '♟';
+          let updatedHistory = this.state.history;
+          updatedHistory.push(this.state.board);
+          this.setState({
+            history: updatedHistory
+          });
+          console.log(this.state.history[this.state.history.length - 2]);
           this.setState({
             blackTeamsTurn: !this.state.blackTeamsTurn
           });
@@ -189,6 +202,12 @@ class Game extends React.Component {
         if(colInx === this.state.selPceColInx - 1 || colInx === this.state.selPceColInx + 1) {
           if(this.whitePieces().includes(boardClone[rowInx][colInx])) {
             boardClone[rowInx][colInx] = '♟';
+            let updatedHistory = this.state.history;
+            updatedHistory.push(this.state.board);
+            this.setState({
+              history: updatedHistory
+            });
+            console.log(this.state.history[this.state.history.length - 2]);
             this.setState({
               blackTeamsTurn: !this.state.blackTeamsTurn
             });
@@ -225,6 +244,12 @@ class Game extends React.Component {
       if(this.state.selPceRowInx === 1 && !this.state.board[2][colInx] && !this.state.board[3][colInx]) {
         if(rowInx === 3 && colInx === this.state.selPceColInx) {
           boardClone[rowInx][colInx] = '♙';
+          let updatedHistory = this.state.history;
+          updatedHistory.push(this.state.board);
+          this.setState({
+            history: updatedHistory
+          });
+          console.log(this.state.history[this.state.history.length - 2]);
           this.setState({
             blackTeamsTurn: !this.state.blackTeamsTurn
           });
@@ -234,6 +259,12 @@ class Game extends React.Component {
       if(rowInx === this.state.selPceRowInx + 1 && colInx === this.state.selPceColInx) {
         if(!boardClone[rowInx][colInx]) {
           boardClone[rowInx][colInx] = '♙';
+          let updatedHistory = this.state.history;
+          updatedHistory.push(this.state.board);
+          this.setState({
+            history: updatedHistory
+          });
+          console.log(this.state.history[this.state.history.length - 2]);
           this.setState({
             blackTeamsTurn: !this.state.blackTeamsTurn
           });
@@ -268,6 +299,12 @@ class Game extends React.Component {
         if(colInx === this.state.selPceColInx - 1 || colInx === this.state.selPceColInx + 1) {
           if(this.blackPieces().includes(boardClone[rowInx][colInx])) {
             boardClone[rowInx][colInx] = '♙';
+            let updatedHistory = this.state.history;
+            updatedHistory.push(this.state.board);
+            this.setState({
+              history: updatedHistory
+            });
+            console.log(this.state.history[this.state.history.length - 2]);
             this.setState({
               blackTeamsTurn: !this.state.blackTeamsTurn
             });
@@ -367,6 +404,12 @@ class Game extends React.Component {
           if(rowInx < this.state.selPceRowInx) {
             if(this.checkNorthEastPath(rowInx)) {
               boardClone[rowInx][colInx] = '♗';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -376,6 +419,12 @@ class Game extends React.Component {
           if(rowInx > this.state.selPceRowInx) {
             if(this.checkSouthWestPath(rowInx)) {
               boardClone[rowInx][colInx] = '♗';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -387,6 +436,12 @@ class Game extends React.Component {
           if(rowInx < this.state.selPceRowInx) {
             if(this.checkNorthWestPath(rowInx)) {
               boardClone[rowInx][colInx] = '♗';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -396,6 +451,12 @@ class Game extends React.Component {
           if(rowInx > this.state.selPceRowInx) {
             if(this.checkSouthEastPath(rowInx)) {
               boardClone[rowInx][colInx] = '♗';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -411,6 +472,12 @@ class Game extends React.Component {
           if(rowInx < this.state.selPceRowInx) {
             if(this.checkNorthEastPath(rowInx)) {
               boardClone[rowInx][colInx] = '♝';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -420,6 +487,12 @@ class Game extends React.Component {
           if(rowInx > this.state.selPceRowInx) {
             if(this.checkSouthWestPath(rowInx)) {
               boardClone[rowInx][colInx] = '♝';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -431,6 +504,12 @@ class Game extends React.Component {
           if(rowInx < this.state.selPceRowInx) {
             if(this.checkNorthWestPath(rowInx)) {
               boardClone[rowInx][colInx] = '♝';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -440,6 +519,12 @@ class Game extends React.Component {
           if(rowInx > this.state.selPceRowInx) {
             if(this.checkSouthEastPath(rowInx)) {
               boardClone[rowInx][colInx] = '♝';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -569,6 +654,12 @@ class Game extends React.Component {
           if(rowInx < this.state.selPceRowInx) {
             if(this.checkNorthEastPath(rowInx)) {
               boardClone[rowInx][colInx] = '♛';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -578,6 +669,12 @@ class Game extends React.Component {
           if(rowInx > this.state.selPceRowInx) {
             if(this.checkSouthWestPath(rowInx)) {
               boardClone[rowInx][colInx] = '♛';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -589,6 +686,12 @@ class Game extends React.Component {
           if(rowInx < this.state.selPceRowInx) {
             if(this.checkNorthWestPath(rowInx)) {
               boardClone[rowInx][colInx] = '♛';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -598,6 +701,12 @@ class Game extends React.Component {
           if(rowInx > this.state.selPceRowInx) {
             if(this.checkSouthEastPath(rowInx)) {
               boardClone[rowInx][colInx] = '♛';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -609,6 +718,12 @@ class Game extends React.Component {
           if(colInx < this.state.selPceColInx) {
             if(this.checkWestPath(colInx)) {
               boardClone[rowInx][colInx] = '♛';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -618,6 +733,12 @@ class Game extends React.Component {
           if(colInx > this.state.selPceColInx) {
             if(this.checkEastPath(colInx)) {
               boardClone[rowInx][colInx] = '♛';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -629,6 +750,12 @@ class Game extends React.Component {
           if(rowInx < this.state.selPceRowInx) {
             if(this.checkNorthPath(rowInx)) {
               boardClone[rowInx][colInx] = '♛';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -638,6 +765,12 @@ class Game extends React.Component {
           if(rowInx > this.state.selPceRowInx) {
             if(this.checkSouthPath(rowInx)) {
               boardClone[rowInx][colInx] = '♛';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -653,6 +786,12 @@ class Game extends React.Component {
           if(rowInx < this.state.selPceRowInx) {
             if(this.checkNorthEastPath(rowInx)) {
               boardClone[rowInx][colInx] = '♕';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -662,6 +801,12 @@ class Game extends React.Component {
           if(rowInx > this.state.selPceRowInx) {
             if(this.checkSouthWestPath(rowInx)) {
               boardClone[rowInx][colInx] = '♕';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -673,6 +818,12 @@ class Game extends React.Component {
           if(rowInx < this.state.selPceRowInx) {
             if(this.checkNorthWestPath(rowInx)) {
               boardClone[rowInx][colInx] = '♕';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -682,6 +833,12 @@ class Game extends React.Component {
           if(rowInx > this.state.selPceRowInx) {
             if(this.checkSouthEastPath(rowInx)) {
               boardClone[rowInx][colInx] = '♕';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -693,6 +850,12 @@ class Game extends React.Component {
           if(colInx < this.state.selPceColInx) {
             if(this.checkWestPath(colInx)) {
               boardClone[rowInx][colInx] = '♕';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -702,6 +865,12 @@ class Game extends React.Component {
           if(colInx > this.state.selPceColInx) {
             if(this.checkEastPath(colInx)) {
               boardClone[rowInx][colInx] = '♕';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -713,6 +882,12 @@ class Game extends React.Component {
           if(rowInx < this.state.selPceRowInx) {
             if(this.checkNorthPath(rowInx)) {
               boardClone[rowInx][colInx] = '♕';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -722,6 +897,12 @@ class Game extends React.Component {
           if(rowInx > this.state.selPceRowInx) {
             if(this.checkSouthPath(rowInx)) {
               boardClone[rowInx][colInx] = '♕';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -774,6 +955,12 @@ class Game extends React.Component {
         if(colInx === this.state.selPceColInx - 1 || colInx === this.state.selPceColInx + 1) {
           if(rowInx === this.state.selPceRowInx - 2 || rowInx === this.state.selPceRowInx + 2) {
             boardClone[rowInx][colInx] = '♘';
+            let updatedHistory = this.state.history;
+            updatedHistory.push(this.state.board);
+            this.setState({
+              history: updatedHistory
+            });
+            console.log(this.state.history[this.state.history.length - 2]);
             this.setState({
               blackTeamsTurn: !this.state.blackTeamsTurn
             });
@@ -783,6 +970,12 @@ class Game extends React.Component {
         if(colInx === this.state.selPceColInx - 2 || colInx === this.state.selPceColInx + 2) {
           if(rowInx === this.state.selPceRowInx - 1 || rowInx === this.state.selPceRowInx + 1) {
             boardClone[rowInx][colInx] = '♘';
+            let updatedHistory = this.state.history;
+            updatedHistory.push(this.state.board);
+            this.setState({
+              history: updatedHistory
+            });
+            console.log(this.state.history[this.state.history.length - 2]);
             this.setState({
               blackTeamsTurn: !this.state.blackTeamsTurn
             });
@@ -796,6 +989,12 @@ class Game extends React.Component {
         if(colInx === this.state.selPceColInx - 1 || colInx === this.state.selPceColInx + 1) {
           if(rowInx === this.state.selPceRowInx - 2 || rowInx === this.state.selPceRowInx + 2) {
             boardClone[rowInx][colInx] = '♞';
+            let updatedHistory = this.state.history;
+            updatedHistory.push(this.state.board);
+            this.setState({
+              history: updatedHistory
+            });
+            console.log(this.state.history[this.state.history.length - 2]);
             this.setState({
               blackTeamsTurn: !this.state.blackTeamsTurn
             });
@@ -805,6 +1004,12 @@ class Game extends React.Component {
         if(colInx === this.state.selPceColInx - 2 || colInx === this.state.selPceColInx + 2) {
           if(rowInx === this.state.selPceRowInx - 1 || rowInx === this.state.selPceRowInx + 1) {
             boardClone[rowInx][colInx] = '♞';
+            let updatedHistory = this.state.history;
+            updatedHistory.push(this.state.board);
+            this.setState({
+              history: updatedHistory
+            });
+            console.log(this.state.history[this.state.history.length - 2]);
             this.setState({
               blackTeamsTurn: !this.state.blackTeamsTurn
             });
@@ -846,6 +1051,12 @@ class Game extends React.Component {
         if(rowInx === this.state.selPceRowInx - 1 || rowInx === this.state.selPceRowInx + 1 || rowInx === this.state.selPceRowInx) {
           if(colInx === this.state.selPceColInx - 1 || colInx === this.state.selPceColInx + 1 || colInx === this.state.selPceColInx) {
             boardClone[rowInx][colInx] = '♔';
+            let updatedHistory = this.state.history;
+            updatedHistory.push(this.state.board);
+            this.setState({
+              history: updatedHistory
+            });
+            console.log(this.state.history[this.state.history.length - 2]);
             this.setState({
               blackTeamsTurn: !this.state.blackTeamsTurn
             });
@@ -859,6 +1070,12 @@ class Game extends React.Component {
         if(rowInx === this.state.selPceRowInx - 1 || rowInx === this.state.selPceRowInx + 1 || rowInx === this.state.selPceRowInx) {
           if(colInx === this.state.selPceColInx - 1 || colInx === this.state.selPceColInx + 1 || colInx === this.state.selPceColInx) {
             boardClone[rowInx][colInx] = '♚';
+            let updatedHistory = this.state.history;
+            updatedHistory.push(this.state.board);
+            this.setState({
+              history: updatedHistory
+            });
+            console.log(this.state.history[this.state.history.length - 2]);
             this.setState({
               blackTeamsTurn: !this.state.blackTeamsTurn
             });
@@ -939,6 +1156,12 @@ class Game extends React.Component {
           if(colInx < this.state.selPceColInx) {
             if(this.checkWestPath(colInx)) {
               boardClone[rowInx][colInx] = '♖';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -948,6 +1171,12 @@ class Game extends React.Component {
           if(colInx > this.state.selPceColInx) {
             if(this.checkEastPath(colInx)) {
               boardClone[rowInx][colInx] = '♖';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -959,6 +1188,12 @@ class Game extends React.Component {
           if(rowInx < this.state.selPceRowInx) {
             if(this.checkNorthPath(rowInx)) {
               boardClone[rowInx][colInx] = '♖';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -968,6 +1203,12 @@ class Game extends React.Component {
           if(rowInx > this.state.selPceRowInx) {
             if(this.checkSouthPath(rowInx)) {
               boardClone[rowInx][colInx] = '♖';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -983,6 +1224,12 @@ class Game extends React.Component {
           if(colInx < this.state.selPceColInx) {
             if(this.checkWestPath(colInx)) {
               boardClone[rowInx][colInx] = '♜';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -992,6 +1239,12 @@ class Game extends React.Component {
           if(colInx > this.state.selPceColInx) {
             if(this.checkEastPath(colInx)) {
               boardClone[rowInx][colInx] = '♜';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -1003,6 +1256,12 @@ class Game extends React.Component {
           if(rowInx < this.state.selPceRowInx) {
             if(this.checkNorthPath(rowInx)) {
               boardClone[rowInx][colInx] = '♜';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -1012,6 +1271,12 @@ class Game extends React.Component {
           if(rowInx > this.state.selPceRowInx) {
             if(this.checkSouthPath(rowInx)) {
               boardClone[rowInx][colInx] = '♜';
+              let updatedHistory = this.state.history;
+              updatedHistory.push(this.state.board);
+              this.setState({
+                history: updatedHistory
+              });
+              console.log(this.state.history[this.state.history.length - 2]);
               this.setState({
                 blackTeamsTurn: !this.state.blackTeamsTurn
               });
@@ -1274,10 +1539,12 @@ class Game extends React.Component {
   }
 
   vetUpdates(res) {
-    this.setState({
-      board: res.data.board
-    });
-    console.log("An update from the database was made");
+    if(String(res.data.board) !== String(this.state.history[this.state.history.length - 2])) {
+      this.setState({
+        board: res.data.board
+      });
+      console.log("An update from the database was made");
+    }
   }
 
   requestBoardFromDataBase() {
