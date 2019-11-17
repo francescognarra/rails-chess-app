@@ -3,4 +3,6 @@
 
 <%= current_user.email %>
 
-<%= react_component("Game", {id: @game.id}) %>
+<div data-turbolinks="false">
+  <%= react_component("Game", {id: @game.id}) %>
+</div>
