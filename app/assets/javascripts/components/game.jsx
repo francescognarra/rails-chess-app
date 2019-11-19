@@ -1158,8 +1158,8 @@ class Game extends React.Component {
   }
 
   updateBoard() {
-    //axios.patch('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id, {
-    axios.patch('http://localhost:3000/games/' + this.props.id, {
+    axios.patch('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id, {
+    //axios.patch('http://localhost:3000/games/' + this.props.id, {
       board: this.state.board
     })
     .catch((err) => console.log(err.response.data) );
@@ -1167,22 +1167,11 @@ class Game extends React.Component {
 
   vetUpdatesForBoard(res) {
     if(String(res.data.board) !== String(this.state.history[this.state.history.length - 2])) {
-      if(String(res.data.board) !== String([
-        ['♖', '♘', '♗', '♔', '♕', '♗', '♘', '♖'],
-        ['♙', '♙', '♙', '♙', '♙', '♙', '♙', '♙'],
-        ['', '', '', '', '', '', '', ''],
-        ['', '', '', '', '', '', '', ''],
-        ['', '', '', '', '', '', '', ''],
-        ['', '', '', '', '', '', '', ''],
-        ['♟', '♟', '♟', '♟', '♟', '♟', '♟', '♟'],
-        ['♜', '♞', '♝', '♚', '♛', '♝', '♞', '♜']
-      ])) {
-        this.setState({
-          board: res.data.board
-        });
-        console.log("The recent board config is");
-        console.log(this.state.history);
-      }
+      this.setState({
+        board: res.data.board
+      });
+      console.log("The recent board config is");
+      console.log(this.state.history);
     }
   }
 
@@ -1205,8 +1194,8 @@ class Game extends React.Component {
   }
 
   requestBoardFromDataBase() {
-    //axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
-    axios.get('http://localhost:3000/games/' + this.props.id)
+    axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
+    //axios.get('http://localhost:3000/games/' + this.props.id)
     .then((res) =>
     this.handleUpdates(res)
     )
