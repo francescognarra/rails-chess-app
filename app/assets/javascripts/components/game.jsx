@@ -1180,6 +1180,8 @@ class Game extends React.Component {
         this.setState({
           board: res.data.board
         });
+        console.log("The recent board config is");
+        console.log(this.state.history);
       }
     }
   }
