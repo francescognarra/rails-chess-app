@@ -1158,14 +1158,14 @@ class Game extends React.Component {
   }
 
   updateBoard() {
-    axios.patch('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id, {
-    //axios.patch('http://localhost:3000/games/' + this.props.id, {
+    //axios.patch('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id, {
+    axios.patch('http://localhost:3000/games/' + this.props.id, {
       board: this.state.board
     })
     .catch((err) => console.log(err.response.data) );
   }
 
-  vetUpdates(res) {
+  vetUpdatesForBoard(res) {
     if(String(res.data.board) !== String(this.state.history[this.state.history.length - 2])) {
       if(String(res.data.board) !== String([
         ['♖', '♘', '♗', '♔', '♕', '♗', '♘', '♖'],
@@ -1186,11 +1186,29 @@ class Game extends React.Component {
     }
   }
 
+  vetUpdatesForMoveHistory(res) {
+    if(String(this.state.history[this.state.history.length - 1]) !== String(res.data.board)) {
+      let updatedHistory = this.state.history;
+      updatedHistory.push(res.data.board);
+      this.setState({
+        history: updatedHistory
+      });
+      console.log("An update to the move history was made");
+      console.log("It was the following:");
+      console.log(this.state.history);
+    }
+  }
+
+  handleUpdates(res) {
+    this.vetUpdatesForBoard(res);
+    this.vetUpdatesForMoveHistory(res);
+  }
+
   requestBoardFromDataBase() {
-    axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
-    //axios.get('http://localhost:3000/games/' + this.props.id)
+    //axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
+    axios.get('http://localhost:3000/games/' + this.props.id)
     .then((res) =>
-      this.vetUpdates(res)
+    this.handleUpdates(res)
     )
   }
 
