@@ -950,18 +950,7 @@ class Game extends React.Component {
         this.setState({ board: boardClone });
       }
     }
-    this.maintainHistoryLength();
     this.gameIsOver(this.state.board);
-  }
-
-  maintainHistoryLength() {
-    if(this.state.history.length >= 3) {
-      let shortenedtHistory  = this.state.history;
-      shortenedtHistory.shift();
-      this.setState({
-        history: shortenedtHistory
-      }); 
-    }
   }
 
   // I plan on updating this function to detect checkmates at a later time
@@ -1188,6 +1177,16 @@ class Game extends React.Component {
     }
   }
 
+  maintainHistoryLength() {
+    if(this.state.history.length >= 3) {
+      let shortenedtHistory  = this.state.history;
+      shortenedtHistory.shift();
+      this.setState({
+        history: shortenedtHistory
+      }); 
+    }
+  }
+
   handleUpdates(res) {
     this.vetUpdatesForBoard(res);
     this.vetUpdatesForMoveHistory(res);
@@ -1204,6 +1203,7 @@ class Game extends React.Component {
   componentDidMount() {
     this.interval = setInterval(() => {
       this.requestBoardFromDataBase();
+      this.maintainHistoryLength();
     }, 1500);
   }
 
