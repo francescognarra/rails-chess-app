@@ -59,7 +59,7 @@ RSpec.describe GamesController, type: :controller do
       game = FactoryBot.create(:game)
       sign_in game.user
       put :update, params: {id: game.id, game: { board: [
-      ["♖", "♘", "♗", "♔", "♕", "♗",  "♘", "♖"],
+        ["♖", "♘", "♗", "♔", "♕", "♗",  "♘", "♖"],
         ['', "♙", "♙", "♙", "♙", "♙", "♙", "♙"],
         ["♙",'','','','','','',''],
         ['','','','','','','',''],
@@ -72,24 +72,6 @@ RSpec.describe GamesController, type: :controller do
       game.reload
       expect(game.board[8][0]).to eq ''
       expect(game.board[16][0]).to eq "♙"
-    end
-
-    it "should require a user be logged in" do
-      game = FactoryBot.create(:game)
-      put :update, params: {id: game.id, game: { board: [
-      ["♖", "♘", "♗", "♔", "♕", "♗",  "♘", "♖"],
-        ['', "♙", "♙", "♙", "♙", "♙", "♙", "♙"],
-        ["♙",'','','','','','',''],
-        ['','','','','','','',''],
-        ['','','','','','','',''],
-        ['','','','','','','',''],
-        ["♟", "♟", "♟", "♟", "♟", "♟", "♟", "♟"],
-        ["♜", "♞", "♝", "♚", "♛", "♝", "♞", "♜"]
-      ]} }
-      expect(response).to redirect_to new_user_session_path
-      game.reload
-      expect(game.board[1][0]).to eq "♙"
-      expect(game.board[2][0]).to eq ''
     end
   end
 
