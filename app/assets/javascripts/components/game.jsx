@@ -66,6 +66,12 @@ class Game extends React.Component {
     return boardClone;
   }
 
+  removePiece(selPceRowInx, selPceColInx) {
+    let boardClone = this.state.board;
+    boardClone[selPceRowInx][selPceColInx] = '';
+    return boardClone;
+  }
+
   checkNorthPath(rowInx) {
     for(let row = rowInx + 1; row < this.state.selPceRowInx; row++) {
       if(this.state.board[row][this.state.selPceColInx]) {
@@ -144,6 +150,59 @@ class Game extends React.Component {
       col++;
     }
     return true;
+  }
+
+  moveNorthSouthEastWest(rowInx, colInx) {
+    if(colInx === this.state.selPceColInx) {
+      if(rowInx < this.state.selPceRowInx) {
+        if(this.checkNorthPath(rowInx)) {
+          this.setPiece(rowInx, colInx);
+          this.removePiece(this.state.selPceRowInx, this.state.selPceColInx);
+        }
+      }
+    }
+    if(colInx === this.state.selPceColInx) {
+      if(rowInx > this.state.selPceRowInx) {
+        if(this.checkSouthPath(rowInx)) {
+          this.setPiece(rowInx, colInx);
+          this.removePiece(this.state.selPceRowInx, this.state.selPceColInx);
+        }
+      }
+    }
+    if(rowInx === this.state.selPceRowInx) {
+      if(colInx > this.state.selPceColInx) {
+        if(this.checkEastPath(colInx)) {
+          this.setPiece(rowInx, colInx);
+          this.removePiece(this.state.selPceRowInx, this.state.selPceColInx);
+        }
+      }
+    }
+    if(rowInx === this.state.selPceRowInx) {
+      if(colInx < this.state.selPceColInx) {
+        if(this.checkWestPath(colInx)) {
+          this.setPiece(rowInx, colInx);
+          this.removePiece(this.state.selPceRowInx, this.state.selPceColInx);
+        }
+      }
+    }
+  }
+
+  legalMoveForWhitePiece(piece, tileToBeOccupied) {
+    if(this.whitePieces().includes(piece) && !this.state.blackTeamsTurn) {
+      if(!this.whitePieces().includes(tileToBeOccupied)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  legalMoveForBlackPiece(piece, tileToBeOccupied) {
+    if(this.blackPieces().includes(piece) && this.state.blackTeamsTurn) {
+      if(!this.blackPieces().includes(tileToBeOccupied)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   blackPieces() {
@@ -776,132 +835,15 @@ class Game extends React.Component {
     return boardClone;
   }
 
-  removeOldRook(rowInx, colInx) {
+  moveRook(rowInx, colInx) {
     let boardClone = this.state.board;
-    if(this.state.selPce === '♖') {
-      if(!this.state.blackTeamsTurn && !this.whitePieces().includes(boardClone[rowInx][colInx])) {
-        if(rowInx === this.state.selPceRowInx) {
-          if(colInx < this.state.selPceColInx) {
-            if(this.checkWestPath(colInx)) {
-              boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
-            }
-          }
-          if(colInx > this.state.selPceColInx) {
-            if(this.checkEastPath(colInx)) {
-              boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
-            }
-          }
-        }
-        if(colInx === this.state.selPceColInx) {
-          if(rowInx < this.state.selPceRowInx) {
-            if(this.checkNorthPath(rowInx)) {
-              boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
-            }
-          }
-          if(rowInx > this.state.selPceRowInx) {
-            if(this.checkSouthPath(rowInx)) {
-              boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
-            }
-          }
-        }
-      }
+    if(this.legalMoveForWhitePiece(this.state.selPce, boardClone[rowInx][colInx])) {
+      this.moveNorthSouthEastWest(rowInx, colInx);
+      this.updateBoard();
     }
-    if(this.state.selPce === '♜') {
-      if(this.state.blackTeamsTurn && !this.blackPieces().includes(boardClone[rowInx][colInx])) {
-        if(rowInx === this.state.selPceRowInx) {
-          if(colInx < this.state.selPceColInx) {
-            if(this.checkWestPath(colInx)) {
-              boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
-            }
-          }
-          if(colInx > this.state.selPceColInx) {
-            if(this.checkEastPath(colInx)) {
-              boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
-            }
-          }
-        }
-        if(colInx === this.state.selPceColInx) {
-          if(rowInx < this.state.selPceRowInx) {
-            if(this.checkNorthPath(rowInx)) {
-              boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
-            }
-          }
-          if(rowInx > this.state.selPceRowInx) {
-            if(this.checkSouthPath(rowInx)) {
-              boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
-            }
-          }
-        }
-      }
-    }
-    return boardClone;
-  }
-
-  setRook(rowInx, colInx) {
-    let boardClone = this.state.board;
-    if(this.state.selPce === '♖') {
-      if(!this.state.blackTeamsTurn && !this.whitePieces().includes(boardClone[rowInx][colInx])) {
-        if(rowInx === this.state.selPceRowInx) {
-          if(colInx < this.state.selPceColInx) {
-            if(this.checkWestPath(colInx)) {
-              this.setPiece(rowInx, colInx);
-              this.updateBoard();
-            }
-          }
-          if(colInx > this.state.selPceColInx) {
-            if(this.checkEastPath(colInx)) {
-              this.setPiece(rowInx, colInx);
-              this.updateBoard();
-            }
-          }
-        }
-        if(colInx === this.state.selPceColInx) {
-          if(rowInx < this.state.selPceRowInx) {
-            if(this.checkNorthPath(rowInx)) {
-              this.setPiece(rowInx, colInx);
-              this.updateBoard();
-            }
-          }
-          if(rowInx > this.state.selPceRowInx) {
-            if(this.checkSouthPath(rowInx)) {
-              this.setPiece(rowInx, colInx);
-              this.updateBoard();
-            }
-          }
-        }
-      }
-    }
-    if(this.state.selPce === '♜') {
-      if(this.state.blackTeamsTurn && !this.blackPieces().includes(boardClone[rowInx][colInx])) {
-        if(rowInx === this.state.selPceRowInx) {
-          if(colInx < this.state.selPceColInx) {
-            if(this.checkWestPath(colInx)) {
-              this.setPiece(rowInx, colInx);
-              this.updateBoard();
-            }
-          }
-          if(colInx > this.state.selPceColInx) {
-            if(this.checkEastPath(colInx)) {
-              this.setPiece(rowInx, colInx);
-              this.updateBoard();
-            }
-          }
-        }
-        if(colInx === this.state.selPceColInx) {
-          if(rowInx < this.state.selPceRowInx) {
-            if(this.checkNorthPath(rowInx)) {
-              this.setPiece(rowInx, colInx);
-              this.updateBoard();
-            }
-          }
-          if(rowInx > this.state.selPceRowInx) {
-            if(this.checkSouthPath(rowInx)) {
-              this.setPiece(rowInx, colInx);
-              this.updateBoard();
-            }
-          }
-        }
-      }
+    if(this.legalMoveForBlackPiece(this.state.selPce, boardClone[rowInx][colInx])) {
+      this.moveNorthSouthEastWest(rowInx, colInx);
+      this.updateBoard();
     }
     return boardClone;
   }
@@ -944,8 +886,7 @@ class Game extends React.Component {
           boardClone = this.setKing(rowInx, colInx);
         }
         if(this.state.selPce === '♖' || this.state.selPce === '♜') {
-          boardClone = this.removeOldRook(rowInx, colInx);
-          boardClone = this.setRook(rowInx, colInx);
+          this.moveRook(rowInx, colInx);
         }
         this.setState({ board: boardClone });
       }
