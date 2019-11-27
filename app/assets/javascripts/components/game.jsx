@@ -715,8 +715,8 @@ class Game extends React.Component {
   }
 
   updateBoard() {
-    //axios.patch('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id, {
-    axios.patch('http://localhost:3000/games/' + this.props.id, {
+    axios.patch('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id, {
+    //axios.patch('http://localhost:3000/games/' + this.props.id, {
       board: this.state.board
     })
     .catch((err) => console.log(err.response.data) );
@@ -761,8 +761,8 @@ class Game extends React.Component {
   }
 
   requestBoardFromDataBase() {
-    //axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
-    axios.get('http://localhost:3000/games/' + this.props.id)
+    axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
+    //axios.get('http://localhost:3000/games/' + this.props.id)
     .then((res) =>
     this.handleUpdates(res)
     )
