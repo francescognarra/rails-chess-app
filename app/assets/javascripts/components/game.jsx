@@ -384,240 +384,6 @@ class Game extends React.Component {
     return boardClone;
   }
 
-  removeOldQueen(rowInx, colInx) {
-    let boardClone = this.state.board;
-    if(this.state.selPce === '♛') {
-      if(this.state.blackTeamsTurn && !this.blackPieces().includes(boardClone[rowInx][colInx])) {
-        if(colInx === this.state.selPceColInx - (rowInx - this.state.selPceRowInx)) {
-          if(rowInx < this.state.selPceRowInx) {
-            if(this.checkNorthEastPath(rowInx)) {
-              boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
-            }
-          }
-          if(rowInx > this.state.selPceRowInx) {
-            if(this.checkSouthWestPath(rowInx)) {
-              boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
-            }
-          }
-        }
-        if(colInx === this.state.selPceColInx + (rowInx - this.state.selPceRowInx)) {
-          if(rowInx < this.state.selPceRowInx) {
-            if(this.checkNorthWestPath(rowInx)) {
-              boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
-            }
-          }
-          if(rowInx > this.state.selPceRowInx) {
-            if(this.checkSouthEastPath(rowInx)) {
-              boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
-            }
-          }
-        }
-        if(rowInx === this.state.selPceRowInx) {
-          if(colInx < this.state.selPceColInx) {
-            if(this.checkWestPath(colInx)) {
-              boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
-            }
-          }
-          if(colInx > this.state.selPceColInx) {
-            if(this.checkEastPath(colInx)) {
-              boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
-            }
-          }
-        }
-        if(colInx === this.state.selPceColInx) {
-          if(rowInx < this.state.selPceRowInx) {
-            if(this.checkNorthPath(rowInx)) {
-              boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
-            }
-          }
-          if(rowInx > this.state.selPceRowInx) {
-            if(this.checkSouthPath(rowInx)) {
-              boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
-            }
-          }
-        }
-      }
-    }
-    if(this.state.selPce === '♕') {
-      if(!this.state.blackTeamsTurn && !this.whitePieces().includes(boardClone[rowInx][colInx])) {
-        if(colInx === this.state.selPceColInx - (rowInx - this.state.selPceRowInx)) {
-          if(rowInx < this.state.selPceRowInx) {
-            if(this.checkNorthEastPath(rowInx)) {
-              boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
-            }
-          }
-          if(rowInx > this.state.selPceRowInx) {
-            if(this.checkSouthWestPath(rowInx)) {
-              boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
-            }
-          }
-        }
-        if(colInx === this.state.selPceColInx + (rowInx - this.state.selPceRowInx)) {
-          if(rowInx < this.state.selPceRowInx) {
-            if(this.checkNorthWestPath(rowInx)) {
-              boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
-            }
-          }
-          if(rowInx > this.state.selPceRowInx) {
-            if(this.checkSouthEastPath(rowInx)) {
-              boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
-            }
-          }
-        }
-        if(rowInx === this.state.selPceRowInx) {
-          if(colInx < this.state.selPceColInx) {
-            if(this.checkWestPath(colInx)) {
-              boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
-            }
-          }
-          if(colInx > this.state.selPceColInx) {
-            if(this.checkEastPath(colInx)) {
-              boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
-            }
-          }
-        }
-        if(colInx === this.state.selPceColInx) {
-          if(rowInx < this.state.selPceRowInx) {
-            if(this.checkNorthPath(rowInx)) {
-              boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
-            }
-          }
-          if(rowInx > this.state.selPceRowInx) {
-            if(this.checkSouthPath(rowInx)) {
-              boardClone[this.state.selPceRowInx][this.state.selPceColInx] = '';
-            }
-          }
-        }
-      }
-    }
-    return boardClone;
-  }
-
-  setQueen(rowInx, colInx) {
-    let boardClone = this.state.board;
-    if(this.state.selPce === '♛') {
-      if(this.state.blackTeamsTurn && !this.blackPieces().includes(boardClone[rowInx][colInx])) {
-        if(colInx === this.state.selPceColInx - (rowInx - this.state.selPceRowInx)) {
-          if(rowInx < this.state.selPceRowInx) {
-            if(this.checkNorthEastPath(rowInx)) {
-              this.setPiece(rowInx, colInx);
-              this.updateBoard();
-            }
-          }
-          if(rowInx > this.state.selPceRowInx) {
-            if(this.checkSouthWestPath(rowInx)) {
-              this.setPiece(rowInx, colInx);
-              this.updateBoard();
-            }
-          }
-        }
-        if(colInx === this.state.selPceColInx + (rowInx - this.state.selPceRowInx)) {
-          if(rowInx < this.state.selPceRowInx) {
-            if(this.checkNorthWestPath(rowInx)) {
-              this.setPiece(rowInx, colInx);
-              this.updateBoard();
-            }
-          }
-          if(rowInx > this.state.selPceRowInx) {
-            if(this.checkSouthEastPath(rowInx)) {
-              this.setPiece(rowInx, colInx);
-              this.updateBoard();
-            }
-          }
-        }
-        if(rowInx === this.state.selPceRowInx) {
-          if(colInx < this.state.selPceColInx) {
-            if(this.checkWestPath(colInx)) {
-              this.setPiece(rowInx, colInx);
-              this.updateBoard();
-            }
-          }
-          if(colInx > this.state.selPceColInx) {
-            if(this.checkEastPath(colInx)) {
-              this.setPiece(rowInx, colInx);
-              this.updateBoard();
-            }
-          }
-        }
-        if(colInx === this.state.selPceColInx) {
-          if(rowInx < this.state.selPceRowInx) {
-            if(this.checkNorthPath(rowInx)) {
-              this.setPiece(rowInx, colInx);
-              this.updateBoard();
-            }
-          }
-          if(rowInx > this.state.selPceRowInx) {
-            if(this.checkSouthPath(rowInx)) {
-              this.setPiece(rowInx, colInx);
-              this.updateBoard();
-            }
-          }
-        }
-      }
-    }
-    if(this.state.selPce === '♕') {
-      if(!this.state.blackTeamsTurn && !this.whitePieces().includes(boardClone[rowInx][colInx])) {
-        if(colInx === this.state.selPceColInx - (rowInx - this.state.selPceRowInx)) {
-          if(rowInx < this.state.selPceRowInx) {
-            if(this.checkNorthEastPath(rowInx)) {
-              this.setPiece(rowInx, colInx);
-              this.updateBoard();
-            }
-          }
-          if(rowInx > this.state.selPceRowInx) {
-            if(this.checkSouthWestPath(rowInx)) {
-              this.setPiece(rowInx, colInx);
-              this.updateBoard();
-            }
-          }
-        }
-        if(colInx === this.state.selPceColInx + (rowInx - this.state.selPceRowInx)) {
-          if(rowInx < this.state.selPceRowInx) {
-            if(this.checkNorthWestPath(rowInx)) {
-              this.setPiece(rowInx, colInx);
-              this.updateBoard();
-            }
-          }
-          if(rowInx > this.state.selPceRowInx) {
-            if(this.checkSouthEastPath(rowInx)) {
-              this.setPiece(rowInx, colInx);
-              this.updateBoard();
-            }
-          }
-        }
-        if(rowInx === this.state.selPceRowInx) {
-          if(colInx < this.state.selPceColInx) {
-            if(this.checkWestPath(colInx)) {
-              this.setPiece(rowInx, colInx);
-              this.updateBoard();
-            }
-          }
-          if(colInx > this.state.selPceColInx) {
-            if(this.checkEastPath(colInx)) {
-              this.setPiece(rowInx, colInx);
-              this.updateBoard();
-            }
-          }
-        }
-        if(colInx === this.state.selPceColInx) {
-          if(rowInx < this.state.selPceRowInx) {
-            if(this.checkNorthPath(rowInx)) {
-              this.setPiece(rowInx, colInx);
-              this.updateBoard();
-            }
-          }
-          if(rowInx > this.state.selPceRowInx) {
-            if(this.checkSouthPath(rowInx)) {
-              this.setPiece(rowInx, colInx);
-              this.updateBoard();
-            }
-          }
-        }
-      }
-    }
-    return boardClone;
-  }
-
   removeOldKnight(rowInx, colInx) {
     let boardClone = this.state.board;
       if(this.state.selPce === '♘') {
@@ -736,6 +502,21 @@ class Game extends React.Component {
     return boardClone;
   }
 
+  moveQueen(rowInx, colInx) {
+    let boardClone = this.state.board;
+    if(this.legalMoveForWhitePiece(this.state.selPce, boardClone[rowInx][colInx])) {
+      this.moveDiagonally(rowInx, colInx);
+      this.moveNorthSouthEastWest(rowInx, colInx);
+      this.updateBoard();
+    }
+    if(this.legalMoveForBlackPiece(this.state.selPce, boardClone[rowInx][colInx])) {
+      this.moveDiagonally(rowInx, colInx);
+      this.moveNorthSouthEastWest(rowInx, colInx);
+      this.updateBoard();
+    }
+    return boardClone;
+  }
+
   moveBishop(rowInx, colInx) {
     let boardClone = this.state.board;
     if(this.legalMoveForWhitePiece(this.state.selPce, boardClone[rowInx][colInx])) {
@@ -787,8 +568,7 @@ class Game extends React.Component {
           boardClone = this.moveBishop(rowInx, colInx);
         }
         if(this.state.selPce === '♛' || this.state.selPce === '♕') {
-          boardClone = this.removeOldQueen(rowInx, colInx);
-          boardClone = this.setQueen(rowInx, colInx);
+          boardClone = this.moveQueen(rowInx, colInx);
         }
         if(this.state.selPce === '♘' || this.state.selPce === '♞') {
           boardClone = this.removeOldKnight(rowInx, colInx);
