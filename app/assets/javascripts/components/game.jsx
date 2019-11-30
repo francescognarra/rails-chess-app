@@ -314,70 +314,25 @@ class Game extends React.Component {
     return boardClone;
   }
 
-  setWhitePawn(rowInx, colInx) {
+  movementLogicForWhitePawns(rowInx, colInx) {
     let boardClone = this.state.board;
-    if(!this.state.blackTeamsTurn && !this.whitePieces().includes(boardClone[rowInx][colInx])) {
-      if(this.state.selPceRowInx === 1 && !this.state.board[2][colInx] && !this.state.board[3][colInx]) {
-        if(rowInx === 3 && colInx === this.state.selPceColInx) {
+    if(this.state.selPceRowInx === 1 && !this.state.board[2][colInx] && !this.state.board[3][colInx]) {
+      if(rowInx === 3 && colInx === this.state.selPceColInx) {
+        this.setPiece(rowInx, colInx);
+        this.removePiece(this.state.selPceRowInx, this.state.selPceColInx);
+      }
+    } 
+    if(rowInx === this.state.selPceRowInx + 1 && colInx === this.state.selPceColInx) {
+      if(!boardClone[rowInx][colInx]) {
+        this.setPiece(rowInx, colInx);
+        this.removePiece(this.state.selPceRowInx, this.state.selPceColInx);
+      }
+    }
+    if(rowInx === this.state.selPceRowInx + 1) {
+      if(colInx === this.state.selPceColInx - 1 || colInx === this.state.selPceColInx + 1) {
+        if(this.blackPieces().includes(boardClone[rowInx][colInx])) {
           this.setPiece(rowInx, colInx);
-          this.updateBoard();
-        }
-      } 
-      if(rowInx === this.state.selPceRowInx + 1 && colInx === this.state.selPceColInx) {
-        if(!boardClone[rowInx][colInx]) {
-          this.setPiece(rowInx, colInx);
-          this.updateBoard();
-        }
-      }
-    }
-    return boardClone;
-  }
-
-  removeOldWhitePawn(rowInx, colInx) {
-    let boardClone = this.state.board;
-    if(!this.state.blackTeamsTurn && !this.whitePieces().includes(boardClone[rowInx][colInx])) {
-      if(this.state.selPceRowInx === 1 && !this.state.board[2][colInx] && !this.state.board[3][colInx]) {
-        if(rowInx === 3 && colInx === this.state.selPceColInx) {
-          boardClone[this.state.selPceRowInx][colInx] = '';
-        }
-      }
-      if(rowInx === this.state.selPceRowInx + 1 && colInx === this.state.selPceColInx) {
-        if(!boardClone[rowInx][colInx]) {
-          boardClone[this.state.selPceRowInx][colInx] = '';
-        }
-      }
-    }
-    return boardClone;
-  }
-
-  whitePawnOvertakePiece(rowInx, colInx) {
-    let boardClone = this.state.board;
-    if(!this.state.blackTeamsTurn && !this.whitePieces().includes(boardClone[rowInx][colInx])) {
-      if(rowInx === this.state.selPceRowInx + 1) {
-        if(colInx === this.state.selPceColInx - 1 || colInx === this.state.selPceColInx + 1) {
-          if(this.blackPieces().includes(boardClone[rowInx][colInx])) {
-            this.setPiece(rowInx, colInx);
-            this.updateBoard();
-          }
-        }
-      }
-    }
-    return boardClone;
-  }
-
-  removeOldWhitePawnForOvertakingPiece(rowInx, colInx) {
-    let boardClone = this.state.board;
-    if(!this.state.blackTeamsTurn && !this.whitePieces().includes(boardClone[rowInx][colInx])) {
-      if(rowInx === this.state.selPceRowInx + 1) {
-        if(colInx === this.state.selPceColInx + 1) {
-          if(boardClone[rowInx][colInx]) {
-            boardClone[this.state.selPceRowInx][colInx - 1] = '';
-          }
-        }
-        if(colInx === this.state.selPceColInx - 1) {
-          if(boardClone[rowInx][colInx]) {
-            boardClone[this.state.selPceRowInx][colInx + 1] = '';
-          }
+          this.removePiece(this.state.selPceRowInx, this.state.selPceColInx);
         }
       }
     }
@@ -408,6 +363,15 @@ class Game extends React.Component {
         this.setPiece(rowInx, colInx);
         this.removePiece(this.state.selPceRowInx, this.state.selPceColInx);
       }
+    }
+    return boardClone;
+  }
+
+  moveWhitePawn(rowInx, colInx) {
+    let boardClone = this.state.board;
+    if(this.legalMoveForWhitePiece(this.state.selPce, boardClone[rowInx][colInx])) {
+      this.movementLogicForWhitePawns(rowInx, colInx);
+      this.updateBoard();
     }
     return boardClone;
   }
@@ -495,10 +459,7 @@ class Game extends React.Component {
           this.blackPawnOvertakePiece(rowInx, colInx);
         }
         if(this.state.selPce === '♙') {
-          this.removeOldWhitePawn(rowInx, colInx);
-          this.setWhitePawn(rowInx, colInx);
-          this.removeOldWhitePawnForOvertakingPiece(rowInx, colInx);
-          this.whitePawnOvertakePiece(rowInx, colInx);
+          this.moveWhitePawn(rowInx, colInx);
         }
         if(this.state.selPce === '♝' || this.state.selPce === '♗') {
           this.moveBishop(rowInx, colInx);
@@ -715,8 +676,8 @@ class Game extends React.Component {
   }
 
   updateBoard() {
-    axios.patch('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id, {
-    //axios.patch('http://localhost:3000/games/' + this.props.id, {
+    //axios.patch('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id, {
+    axios.patch('http://localhost:3000/games/' + this.props.id, {
       board: this.state.board
     })
     .catch((err) => console.log(err.response.data) );
@@ -761,8 +722,8 @@ class Game extends React.Component {
   }
 
   requestBoardFromDataBase() {
-    axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
-    //axios.get('http://localhost:3000/games/' + this.props.id)
+    //axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
+    axios.get('http://localhost:3000/games/' + this.props.id)
     .then((res) =>
     this.handleUpdates(res)
     )
