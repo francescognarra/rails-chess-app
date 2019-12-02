@@ -326,7 +326,7 @@ class Game extends React.Component {
     let boardClone = this.state.board;
     if(this.legalMoveForBlackPiece(this.state.selPce, boardClone[rowInx][colInx])) {
       this.movementLogicForBlackPawns(rowInx, colInx);
-      this.updateBoard();
+      this.updateGameToDataBase();
     }
     return boardClone;
   }
@@ -335,7 +335,7 @@ class Game extends React.Component {
     let boardClone = this.state.board;
     if(this.legalMoveForWhitePiece(this.state.selPce, boardClone[rowInx][colInx])) {
       this.movementLogicForWhitePawns(rowInx, colInx);
-      this.updateBoard();
+      this.updateGameToDataBase();
     }
     return boardClone;
   }
@@ -344,11 +344,11 @@ class Game extends React.Component {
     let boardClone = this.state.board;
     if(this.legalMoveForWhitePiece(this.state.selPce, boardClone[rowInx][colInx])) {
       this.movementLogicForKnights(rowInx, colInx);
-      this.updateBoard();
+      this.updateGameToDataBase();
     }
     if(this.legalMoveForBlackPiece(this.state.selPce, boardClone[rowInx][colInx])) {
       this.movementLogicForKnights(rowInx, colInx);
-      this.updateBoard();
+      this.updateGameToDataBase();
     }
     return boardClone;
   }
@@ -357,11 +357,11 @@ class Game extends React.Component {
     let boardClone = this.state.board;
     if(this.legalMoveForWhitePiece(this.state.selPce, boardClone[rowInx][colInx])) {
       this.movementLogicForKings(rowInx, colInx);
-      this.updateBoard();
+      this.updateGameToDataBase();
     }
     if(this.legalMoveForBlackPiece(this.state.selPce, boardClone[rowInx][colInx])) {
       this.movementLogicForKings(rowInx, colInx);
-      this.updateBoard();
+      this.updateGameToDataBase();
     }
     return boardClone;
   }
@@ -371,12 +371,12 @@ class Game extends React.Component {
     if(this.legalMoveForWhitePiece(this.state.selPce, boardClone[rowInx][colInx])) {
       this.moveDiagonally(rowInx, colInx);
       this.moveNorthSouthEastWest(rowInx, colInx);
-      this.updateBoard();
+      this.updateGameToDataBase();
     }
     if(this.legalMoveForBlackPiece(this.state.selPce, boardClone[rowInx][colInx])) {
       this.moveDiagonally(rowInx, colInx);
       this.moveNorthSouthEastWest(rowInx, colInx);
-      this.updateBoard();
+      this.updateGameToDataBase();
     }
     return boardClone;
   }
@@ -385,11 +385,11 @@ class Game extends React.Component {
     let boardClone = this.state.board;
     if(this.legalMoveForWhitePiece(this.state.selPce, boardClone[rowInx][colInx])) {
       this.moveDiagonally(rowInx, colInx);
-      this.updateBoard();
+      this.updateGameToDataBase();
     }
     if(this.legalMoveForBlackPiece(this.state.selPce, boardClone[rowInx][colInx])) {
       this.moveDiagonally(rowInx, colInx);
-      this.updateBoard();
+      this.updateGameToDataBase();
     }
     return boardClone;
   }
@@ -398,11 +398,11 @@ class Game extends React.Component {
     let boardClone = this.state.board;
     if(this.legalMoveForWhitePiece(this.state.selPce, boardClone[rowInx][colInx])) {
       this.moveNorthSouthEastWest(rowInx, colInx);
-      this.updateBoard();
+      this.updateGameToDataBase();
     }
     if(this.legalMoveForBlackPiece(this.state.selPce, boardClone[rowInx][colInx])) {
       this.moveNorthSouthEastWest(rowInx, colInx);
-      this.updateBoard();
+      this.updateGameToDataBase();
     }
     return boardClone;
   }
@@ -473,7 +473,7 @@ class Game extends React.Component {
     this.setState({
       board: boardClone
     });
-    this.updateBoard()
+    this.updateGameToDataBase();
   }
 
   promoteToWhiteBishop(rowInx, colInx) {
@@ -482,7 +482,7 @@ class Game extends React.Component {
     this.setState({
       board: boardClone
     });
-    this.updateBoard()
+    this.updateGameToDataBase();
   }
 
   promoteToWhiteKnight(rowInx, colInx) {
@@ -491,7 +491,7 @@ class Game extends React.Component {
     this.setState({
       board: boardClone
     });
-    this.updateBoard()
+    this.updateGameToDataBase();
   }
 
   promoteToWhiteQueen(rowInx, colInx) {
@@ -500,7 +500,7 @@ class Game extends React.Component {
     this.setState({
       board: boardClone
     });
-    this.updateBoard()
+    this.updateGameToDataBase();
   }
 
   promoteToBlackRook(rowInx, colInx) {
@@ -509,7 +509,7 @@ class Game extends React.Component {
     this.setState({
       board: boardClone
     });
-    this.updateBoard()
+    this.updateGameToDataBase();
   }
 
   promoteToBlackBishop(rowInx, colInx) {
@@ -518,7 +518,7 @@ class Game extends React.Component {
     this.setState({
       board: boardClone
     });
-    this.updateBoard()
+    this.updateGameToDataBase();
   }
 
   promoteToBlackKnight(rowInx, colInx) {
@@ -527,7 +527,7 @@ class Game extends React.Component {
     this.setState({
       board: boardClone
     });
-    this.updateBoard()
+    this.updateGameToDataBase();
   }
 
   promoteToBlackQueen(rowInx, colInx) {
@@ -536,7 +536,7 @@ class Game extends React.Component {
     this.setState({
       board: boardClone
     });
-    this.updateBoard()
+    this.updateGameToDataBase();
   }
 
   renderSquare(rowInx, colInx) {
@@ -636,15 +636,15 @@ class Game extends React.Component {
     );
   }
 
-  updateBoard() {
-    axios.patch('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id, {
-    //axios.patch('http://localhost:3000/games/' + this.props.id, {
+  updateGameToDataBase() {
+    //axios.patch('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id, {
+    axios.patch('http://localhost:3000/games/' + this.props.id, {
       board: this.state.board
     })
     .catch((err) => console.log(err.response.data) );
   }
 
-  vetUpdatesForBoard(res) {
+  vetUpdatesForGameData(res) {
     if(String(res.data.board) !== String(this.state.history[this.state.history.length - 2])) {
       this.setState({
         board: res.data.board
@@ -678,13 +678,13 @@ class Game extends React.Component {
   }
 
   handleUpdates(res) {
-    this.vetUpdatesForBoard(res);
+    this.vetUpdatesForGameData(res);
     this.vetUpdatesForMoveHistory(res);
   }
 
-  requestBoardFromDataBase() {
-    axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
-    //axios.get('http://localhost:3000/games/' + this.props.id)
+  requestDataFromDataBase() {
+    //axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
+    axios.get('http://localhost:3000/games/' + this.props.id)
     .then((res) =>
     this.handleUpdates(res)
     )
@@ -692,13 +692,13 @@ class Game extends React.Component {
 
   componentDidMount() {
     this.interval = setInterval(() => {
-      this.requestBoardFromDataBase();
+      this.requestDataFromDataBase();
       this.maintainHistoryLength();
     }, 1500);
   }
 
   componentWillMount() {
-    this.requestBoardFromDataBase();
+    this.requestDataFromDataBase();
   }
 
   componentWillUnmount() {
