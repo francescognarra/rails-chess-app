@@ -647,10 +647,9 @@ class Game extends React.Component {
   vetUpdatesForGameData(res) {
     if(String(res.data.board) !== String(this.state.history[this.state.history.length - 2])) {
       this.setState({
-        board: res.data.board
+        board: res.data.board,
+        blackTeamsTurn: res.data.black_teams_turn
       });
-      console.log("The recent board config is");
-      console.log(this.state.history);
     }
   }
 
@@ -661,9 +660,6 @@ class Game extends React.Component {
       this.setState({
         history: updatedHistory
       });
-      console.log("An update to the move history was made");
-      console.log("It was the following:");
-      console.log(this.state.history);
     }
   }
 

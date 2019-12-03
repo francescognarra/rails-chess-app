@@ -27,6 +27,7 @@ class GamesController < ApplicationController
   def update
     game = Game.find(params[:id])
     game.update_attribute(:board, board_param["board"])
+    game.update_attribute(:black_teams_turn, !game.black_teams_turn)
     render json: game.as_json()
   end
 

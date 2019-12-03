@@ -20,7 +20,7 @@ RSpec.describe GamesController, type: :controller do
     it "should be able to create a new game" do
       user = FactoryBot.create(:user)
       sign_in user
-      post :create, params: { game: { name: 'name' } }
+      post :create
       expect(response).to have_http_status(:found)
     end
   end
