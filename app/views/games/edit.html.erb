@@ -2,7 +2,9 @@
 <br />
 
 <%= current_user.email %>
+<br />
+<%= @game.user.email %>
+<br />
+<%= @game.user == current_user %>
 
-<div data-turbolinks="false">
-  <%= react_component("Game", {id: @game.id}) %>
-</div>
+<%= react_component("Game", {id: @game.id}) %>

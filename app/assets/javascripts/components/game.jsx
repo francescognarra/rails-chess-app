@@ -440,7 +440,6 @@ class Game extends React.Component {
         this.setState({ board: boardClone });
       }
     }
-    this.gameIsOver(this.state.board);
   }
 
   // I plan on updating this function to detect checkmates at a later time
@@ -465,6 +464,14 @@ class Game extends React.Component {
         });
       }
     }
+  }
+
+  renderWinnerStatement(blackTeamWinStatus) {
+    return(
+      <WinnerStatement 
+        value={blackTeamWinStatus}
+      />
+    );
   }
 
   promoteToWhiteRook(rowInx, colInx) {
@@ -650,6 +657,7 @@ class Game extends React.Component {
         board: res.data.board,
         blackTeamsTurn: res.data.black_teams_turn
       });
+      this.gameIsOver(this.state.board);
     }
   }
 
@@ -669,7 +677,7 @@ class Game extends React.Component {
       shortenedtHistory.shift();
       this.setState({
         history: shortenedtHistory
-      }); 
+      });
     }
   }
 
@@ -705,6 +713,7 @@ class Game extends React.Component {
     return (
       <div>
 
+        {this.renderWinnerStatement(this.state.blackTeamWon)}
         {this.renderCurrentTurn(this.state.blackTeamsTurn)}
         <br />
         {this.renderSelectedPiece(this.state.selPce)}
