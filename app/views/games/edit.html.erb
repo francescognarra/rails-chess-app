@@ -3,8 +3,17 @@
 
 <%= current_user.email %>
 <br />
-<%= @game.user.email %>
-<br />
-<%= @game.user == current_user %>
+<% player = "player_1" %>
+<% if @game.user != current_user %>
+  <% player = "player_2" %>
+<% end %>
 
-<%= react_component("Game", {id: @game.id}) %>
+<% if player == 'player_1' %>
+  <%= "This user is the match host" %>
+<% end %>
+
+<% if player == 'player_2' %>
+  <%= "this user is the match guest" %>
+<% end %>
+
+<%= react_component("Game", {id: @game.id, player: player}) %>
