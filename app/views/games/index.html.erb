@@ -6,6 +6,13 @@
 <h3>Pick a chess match to join</h3>
 
 <% @game.each do |game| %>
-  <%= link_to "Hosted by " + game.user.email,  edit_game_path(game)%>
+  <% if game.player_count < 2 %>
+    <%= link_to "Hosted by " + game.user.email,  edit_game_path(game)%>
+    <br />
+  <% else %>
+    <br />
+    <%= "The following game is in spectator mode" %>
+    <%= link_to "Hosted by " + game.user.email,  edit_game_path(game)%>
+  <% end %>
   <br/>
 <% end %>

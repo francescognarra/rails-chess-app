@@ -17,11 +17,17 @@ class GamesController < ApplicationController
 
   def create
     @game = current_user.games.create()
+    @game.update_attribute(:player_1, @game.user.email)
+    @game.update_attribute(:player_count, 1)
     redirect_to edit_game_path(@game)
   end
 
   def edit
     @game = Game.find(params[:id])
+    if @game.player_count == 1 && @game.user != current_user
+      @game.update_attribute(:player_2, current_user.email)
+      @game.update_attribute(:player_count, 2)
+    end
   end
 
   def update
@@ -33,7 +39,7 @@ class GamesController < ApplicationController
 
   def destroy
     game = Game.find_by_id(params[:id])
-    redirect_to root_path
+    redirect_to games_path
     game.destroy if game
   end
 

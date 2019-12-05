@@ -11,6 +11,9 @@ class CreateGames < ActiveRecord::Migration[5.2]
         ["♟", "♟", "♟", "♟", "♟", "♟", "♟", "♟"],
         ["♜", "♞", "♝", "♚", "♛", "♝", "♞", "♜"]
       ]
+      t.integer "player_count", default: 0
+      t.string "player_1", default: ""
+      t.string "player_2", default: ""
       t.integer "user_id"
       t.boolean :black_teams_turn, default: false
       t.timestamps
