@@ -18,15 +18,16 @@ class GamesController < ApplicationController
   def create
     @game = current_user.games.create()
     @game.update_attribute(:player_1, @game.user.email)
-    @game.update_attribute(:player_count, 1)
     redirect_to edit_game_path(@game)
   end
 
   def edit
     @game = Game.find(params[:id])
-    if @game.player_count == 1 && @game.user != current_user
+    if @game.player_1 != current_user.email && @game.player_2 == ''
       @game.update_attribute(:player_2, current_user.email)
-      @game.update_attribute(:player_count, 2)
+    end
+    if current_user.email != @game.player_1 && current_user.email != @game.player_2
+      redirect_to games_path, alert: "Game is full, sorry"
     end
   end
 

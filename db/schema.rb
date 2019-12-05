@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 2019_10_25_001914) do
 
   create_table "games", force: :cascade do |t|
     t.text "board", default: [["♖", "♘", "♗", "♔", "♕", "♗", "♘", "♖"], ["♙", "♙", "♙", "♙", "♙", "♙", "♙", "♙"], ["", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", ""], ["", "", "", "", "", "", "", ""], ["♟", "♟", "♟", "♟", "♟", "♟", "♟", "♟"], ["♜", "♞", "♝", "♚", "♛", "♝", "♞", "♜"]], array: true
-    t.integer "player_count", default: 0
     t.string "player_1", default: ""
     t.string "player_2", default: ""
     t.integer "user_id"

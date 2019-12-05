@@ -17,14 +17,6 @@
   <% player = "player_2" %>
 <% end %>
 
-<% if current_user.email != @game.player_2 && current_user.email != @game.player_1 %>
-  <% player = 'spectator' %>
-<% end %>
-
-<% if player == 'spectator' %>
-  <%= "You're in spectator mode" %>
-<% end %>  
-
 <% if player == 'player_1' %>
   <%= "Your playing as the white team" %>
 <% end %>
