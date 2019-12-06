@@ -18,7 +18,9 @@ class Game extends React.Component {
       selPce: null,
       selPceRowInx: null,
       selPceColInx: null,
-      history: []
+      history: [],
+      player_1: null,
+      player_2: null
     }
   }
 
@@ -472,14 +474,6 @@ class Game extends React.Component {
     }
   }
 
-  renderWinnerStatement(blackTeamWinStatus) {
-    return(
-      <WinnerStatement 
-        value={blackTeamWinStatus}
-      />
-    );
-  }
-
   promoteToWhiteRook(rowInx, colInx) {
     let boardClone = this.state.board;
     boardClone[rowInx][colInx] = '♖';
@@ -649,9 +643,36 @@ class Game extends React.Component {
     );
   }
 
+  renderWinnerStatement(blackTeamWinStatus, player_1, player_2) {
+    return(
+      <WinnerStatement 
+        value={blackTeamWinStatus}
+        player_1={player_1}
+        player_2={player_2}
+      />
+    );
+  }
+
+  renderWhoVsWho(player_1, player_2) {
+    return(
+      <WhoVsWho
+        player_1={player_1}
+        player_2={player_2}
+      />
+    );
+  }
+
+  renderPlayerTeamStatement(player) {
+    return(
+      <PlayerTeamStatement
+        player={player}
+      />
+    );
+  }
+
   updateGameToDataBase() {
-    axios.patch('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id, {
-    //axios.patch('http://localhost:3000/games/' + this.props.id, {
+    //axios.patch('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id, {
+    axios.patch('http://localhost:3000/games/' + this.props.id, {
       board: this.state.board
     })
     .catch((err) => console.log(err.response.data) );
@@ -661,10 +682,11 @@ class Game extends React.Component {
     if(String(res.data.board) !== String(this.state.history[this.state.history.length - 2])) {
       this.setState({
         board: res.data.board,
-        blackTeamsTurn: res.data.black_teams_turn
+        blackTeamsTurn: res.data.black_teams_turn,
+        player_1: res.data.player_1,
+        player_2: res.data.player_2
       });
       this.gameIsOver(this.state.board);
-      console.log(this.props.player);
     }
   }
 
@@ -694,8 +716,8 @@ class Game extends React.Component {
   }
 
   requestDataFromDataBase() {
-    axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
-    //axios.get('http://localhost:3000/games/' + this.props.id)
+    //axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
+    axios.get('http://localhost:3000/games/' + this.props.id)
     .then((res) =>
     this.handleUpdates(res)
     )
@@ -720,7 +742,13 @@ class Game extends React.Component {
     return (
       <div>
 
-        {this.renderWinnerStatement(this.state.blackTeamWon)}
+        {this.renderWhoVsWho(this.state.player_1, this.state.player_2)}
+        {this.renderPlayerTeamStatement(this.props.player)}
+        {this.renderWinnerStatement(
+          this.state.blackTeamWon,
+          this.state.player_1,
+          this.state.player_2
+        )}
         {this.renderCurrentTurn(this.state.blackTeamsTurn)}
         <br />
         {this.renderSelectedPiece(this.state.selPce)}

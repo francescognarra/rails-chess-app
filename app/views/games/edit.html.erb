@@ -1,28 +1,9 @@
-<%= link_to 'End match and return to homepage', game_path(@game), method: :delete %>
-<br />
-
-<%= "Being hosted by #{@game.user.email}" %>
-<br />
-
-<%= "#{current_user.email} is currently logged in" %>
-<br />
-
-<%= "#{@game.player_1} is player_1" %>
-<br />
-<%= "#{@game.player_2} is player_2" %>
+<%= link_to 'End match and return to game lobby', game_path(@game), method: :delete %>
 <br />
 
 <% player = "player_1" %>
 <% if @game.user != current_user %>
   <% player = "player_2" %>
-<% end %>
-
-<% if player == 'player_1' %>
-  <%= "Your playing as the white team" %>
-<% end %>
-
-<% if player == 'player_2' %>
-  <%= "Your playing as the black team" %>
 <% end %>
 
 <%= react_component("Game", {id: @game.id, player: player}) %>

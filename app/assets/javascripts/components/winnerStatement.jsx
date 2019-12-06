@@ -4,18 +4,18 @@ class WinnerStatement extends React.Component {
     if(this.props.value === false) {
       return(
         <div className="winner-statement">
-          The white team won
+          {this.props.player_1} won
           <br />
-          The black team lost
+          {this.props.player_2} lost
         </div>
       );
     }
     if(this.props.value === true) {
       return(
         <div className="winner-statement">
-          The black team won
+          {this.props.player_2} won
           <br />
-          The white team lost
+          {this.props.player_1} lost
         </div>
       );
     } else {
