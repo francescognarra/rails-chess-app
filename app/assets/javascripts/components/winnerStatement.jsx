@@ -1,6 +1,6 @@
 class WinnerStatement extends React.Component {
 
-  render() {
+  render() { 
     if(this.props.value === false) {
       return(
         <div className="winner-statement">
@@ -18,10 +18,7 @@ class WinnerStatement extends React.Component {
           {this.props.player_1} lost
         </div>
       );
-    } else {
-      return(
-      <div></div>
-      );
     }
+    return(<div></div>);
   }
 }

@@ -162,12 +162,14 @@ class Game extends React.Component {
         if(this.checkNorthEastPath(rowInx)) {
           this.setPiece(rowInx, colInx);
           this.removePiece(this.state.selPceRowInx, this.state.selPceColInx);
+          this.updateGameToDataBase();
         }
       }
       if(rowInx > this.state.selPceRowInx) {
         if(this.checkSouthWestPath(rowInx)) {
           this.setPiece(rowInx, colInx);
           this.removePiece(this.state.selPceRowInx, this.state.selPceColInx);
+          this.updateGameToDataBase();
         }
       }
     }
@@ -176,12 +178,14 @@ class Game extends React.Component {
         if(this.checkNorthWestPath(rowInx)) {
           this.setPiece(rowInx, colInx);
           this.removePiece(this.state.selPceRowInx, this.state.selPceColInx);
+          this.updateGameToDataBase();
         }
       }
       if(rowInx > this.state.selPceRowInx) {
         if(this.checkSouthEastPath(rowInx)) {
           this.setPiece(rowInx, colInx);
           this.removePiece(this.state.selPceRowInx, this.state.selPceColInx);
+          this.updateGameToDataBase();
         }
       }
     }
@@ -193,6 +197,7 @@ class Game extends React.Component {
         if(this.checkNorthPath(rowInx)) {
           this.setPiece(rowInx, colInx);
           this.removePiece(this.state.selPceRowInx, this.state.selPceColInx);
+          this.updateGameToDataBase();
         }
       }
     }
@@ -201,6 +206,7 @@ class Game extends React.Component {
         if(this.checkSouthPath(rowInx)) {
           this.setPiece(rowInx, colInx);
           this.removePiece(this.state.selPceRowInx, this.state.selPceColInx);
+          this.updateGameToDataBase();
         }
       }
     }
@@ -209,6 +215,7 @@ class Game extends React.Component {
         if(this.checkEastPath(colInx)) {
           this.setPiece(rowInx, colInx);
           this.removePiece(this.state.selPceRowInx, this.state.selPceColInx);
+          this.updateGameToDataBase();
         }
       }
     }
@@ -217,6 +224,7 @@ class Game extends React.Component {
         if(this.checkWestPath(colInx)) {
           this.setPiece(rowInx, colInx);
           this.removePiece(this.state.selPceRowInx, this.state.selPceColInx);
+          this.updateGameToDataBase();
         }
       }
     }
@@ -258,12 +266,14 @@ class Game extends React.Component {
       if(rowInx === 4 && colInx === this.state.selPceColInx) {
         this.setPiece(rowInx, colInx);
         this.removePiece(this.state.selPceRowInx, this.state.selPceColInx);
+        this.updateGameToDataBase();
       }
     } 
     if(rowInx === this.state.selPceRowInx - 1 && colInx === this.state.selPceColInx) {
       if(!boardClone[rowInx][colInx]) {
         this.setPiece(rowInx, colInx);
         this.removePiece(this.state.selPceRowInx, this.state.selPceColInx);
+        this.updateGameToDataBase();
       }
     }
     if(rowInx === this.state.selPceRowInx - 1) {
@@ -271,6 +281,7 @@ class Game extends React.Component {
         if(this.whitePieces().includes(boardClone[rowInx][colInx])) {
           this.setPiece(rowInx, colInx);
           this.removePiece(this.state.selPceRowInx, this.state.selPceColInx);
+          this.updateGameToDataBase();
         }
       }
     }
@@ -283,12 +294,14 @@ class Game extends React.Component {
       if(rowInx === 3 && colInx === this.state.selPceColInx) {
         this.setPiece(rowInx, colInx);
         this.removePiece(this.state.selPceRowInx, this.state.selPceColInx);
+        this.updateGameToDataBase();
       }
     } 
     if(rowInx === this.state.selPceRowInx + 1 && colInx === this.state.selPceColInx) {
       if(!boardClone[rowInx][colInx]) {
         this.setPiece(rowInx, colInx);
         this.removePiece(this.state.selPceRowInx, this.state.selPceColInx);
+        this.updateGameToDataBase();
       }
     }
     if(rowInx === this.state.selPceRowInx + 1) {
@@ -296,6 +309,7 @@ class Game extends React.Component {
         if(this.blackPieces().includes(boardClone[rowInx][colInx])) {
           this.setPiece(rowInx, colInx);
           this.removePiece(this.state.selPceRowInx, this.state.selPceColInx);
+          this.updateGameToDataBase();
         }
       }
     }
@@ -308,12 +322,14 @@ class Game extends React.Component {
       if(rowInx === this.state.selPceRowInx - 2 || rowInx === this.state.selPceRowInx + 2) {
         this.setPiece(rowInx, colInx);
         this.removePiece(this.state.selPceRowInx, this.state.selPceColInx);
+        this.updateGameToDataBase();
       }
     } 
     if(colInx === this.state.selPceColInx - 2 || colInx === this.state.selPceColInx + 2) {
       if(rowInx === this.state.selPceRowInx - 1 || rowInx === this.state.selPceRowInx + 1) {
         this.setPiece(rowInx, colInx);
         this.removePiece(this.state.selPceRowInx, this.state.selPceColInx);
+        this.updateGameToDataBase();
       }
     }
     return boardClone;
@@ -325,6 +341,7 @@ class Game extends React.Component {
       if(colInx === this.state.selPceColInx - 1 || colInx === this.state.selPceColInx + 1 || colInx === this.state.selPceColInx) {
         this.setPiece(rowInx, colInx);
         this.removePiece(this.state.selPceRowInx, this.state.selPceColInx);
+        this.updateGameToDataBase();
       }
     }
     return boardClone;
@@ -334,7 +351,6 @@ class Game extends React.Component {
     let boardClone = this.state.board;
     if(this.legalMoveForBlackPiece(this.state.selPce, boardClone[rowInx][colInx])) {
       this.movementLogicForBlackPawns(rowInx, colInx);
-      this.updateGameToDataBase();
     }
     return boardClone;
   }
@@ -343,7 +359,6 @@ class Game extends React.Component {
     let boardClone = this.state.board;
     if(this.legalMoveForWhitePiece(this.state.selPce, boardClone[rowInx][colInx])) {
       this.movementLogicForWhitePawns(rowInx, colInx);
-      this.updateGameToDataBase();
     }
     return boardClone;
   }
@@ -352,11 +367,9 @@ class Game extends React.Component {
     let boardClone = this.state.board;
     if(this.legalMoveForWhitePiece(this.state.selPce, boardClone[rowInx][colInx])) {
       this.movementLogicForKnights(rowInx, colInx);
-      this.updateGameToDataBase();
     }
     if(this.legalMoveForBlackPiece(this.state.selPce, boardClone[rowInx][colInx])) {
       this.movementLogicForKnights(rowInx, colInx);
-      this.updateGameToDataBase();
     }
     return boardClone;
   }
@@ -365,11 +378,9 @@ class Game extends React.Component {
     let boardClone = this.state.board;
     if(this.legalMoveForWhitePiece(this.state.selPce, boardClone[rowInx][colInx])) {
       this.movementLogicForKings(rowInx, colInx);
-      this.updateGameToDataBase();
     }
     if(this.legalMoveForBlackPiece(this.state.selPce, boardClone[rowInx][colInx])) {
       this.movementLogicForKings(rowInx, colInx);
-      this.updateGameToDataBase();
     }
     return boardClone;
   }
@@ -379,12 +390,10 @@ class Game extends React.Component {
     if(this.legalMoveForWhitePiece(this.state.selPce, boardClone[rowInx][colInx])) {
       this.moveDiagonally(rowInx, colInx);
       this.moveNorthSouthEastWest(rowInx, colInx);
-      this.updateGameToDataBase();
     }
     if(this.legalMoveForBlackPiece(this.state.selPce, boardClone[rowInx][colInx])) {
       this.moveDiagonally(rowInx, colInx);
       this.moveNorthSouthEastWest(rowInx, colInx);
-      this.updateGameToDataBase();
     }
     return boardClone;
   }
@@ -393,11 +402,9 @@ class Game extends React.Component {
     let boardClone = this.state.board;
     if(this.legalMoveForWhitePiece(this.state.selPce, boardClone[rowInx][colInx])) {
       this.moveDiagonally(rowInx, colInx);
-      this.updateGameToDataBase();
     }
     if(this.legalMoveForBlackPiece(this.state.selPce, boardClone[rowInx][colInx])) {
       this.moveDiagonally(rowInx, colInx);
-      this.updateGameToDataBase();
     }
     return boardClone;
   }
@@ -406,11 +413,9 @@ class Game extends React.Component {
     let boardClone = this.state.board;
     if(this.legalMoveForWhitePiece(this.state.selPce, boardClone[rowInx][colInx])) {
       this.moveNorthSouthEastWest(rowInx, colInx);
-      this.updateGameToDataBase();
     }
     if(this.legalMoveForBlackPiece(this.state.selPce, boardClone[rowInx][colInx])) {
       this.moveNorthSouthEastWest(rowInx, colInx);
-      this.updateGameToDataBase();
     }
     return boardClone;
   }
