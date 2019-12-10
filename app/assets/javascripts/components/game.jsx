@@ -724,7 +724,7 @@ class Game extends React.Component {
     axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games/' + this.props.id)
     //axios.get('http://localhost:3000/games/' + this.props.id)
     .then((res) =>
-    this.handleUpdates(res)
+      this.handleUpdates(res)
     )
   }
 

@@ -9,9 +9,8 @@ class WinnerStatement extends React.Component {
           {this.props.player_2} lost
           <br />
           <button>
-          <span><a href='https://chess-app-rails-andy-strube.herokuapp.com/'>End Match</a></span>
+            <span><a href='https://chess-app-rails-andy-strube.herokuapp.com/games/'>End Match and return to lobby</a></span>
           </button>
-          
         </div>
       );
     }
@@ -22,7 +21,9 @@ class WinnerStatement extends React.Component {
           <br />
           {this.props.player_1} lost
           <br />
-          <span><a href='https://chess-app-rails-andy-strube.herokuapp.com/'>End Match</a></span>
+          <button>
+            <span><a href='https://chess-app-rails-andy-strube.herokuapp.com/games/'>End Match and return to lobby</a></span>
+          </button>
         </div>
       );
     }

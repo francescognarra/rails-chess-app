@@ -5,12 +5,4 @@
 
 <h3>Pick a chess match to join</h3>
 
-<% @games.each do |game| %>
-  <% if !game.player_1.length.zero? && game.player_2.length.zero? %> 
-    <% if !game.nil? %>
-      <%= link_to "Hosted by " + game.user.email,  edit_game_path(game)%>
-    <% end %>
-    <br />
-  <% end %>
-  <br/>
-<% end %>
+<%= react_component("GamesList") %>
