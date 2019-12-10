@@ -761,7 +761,6 @@ class Game extends React.Component {
   render() {
     return (
       <div>
-
         {this.renderWhoVsWho(this.state.player_1, this.state.player_2)}
         {this.renderPlayerTeamStatement(this.props.player)}
         {this.renderWinnerStatement(
@@ -900,7 +899,6 @@ class Game extends React.Component {
           {this.renderLowerLetterColumnSquare('B')}
           {this.renderLowerLetterColumnSquare('A')}
         </div>
-
       </div>
     );
   }

@@ -1,16 +1,8 @@
-<h2>Chess App by Andy Strube</h2>
-<h3>You need to be signed in to use this app</h3>
+<%= link_to 'Return to homepage', root_path %>
+<br />
+<%= link_to "Start a new game", new_game_path %>
+<br /><br />
 
-<% if !current_user %>
-  <%= link_to 'Log in', new_user_session_path %>
-  <br />
-  <%= link_to 'Sign up', new_user_registration_path%>
-<% end %>
+<h3>Pick a chess match to join</h3>
 
-<% if current_user %>
-  <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
-  <br />
-  <%= link_to "Start a new game", new_game_path %>
-  <br />
-  <%= link_to 'Go to games lobby', games_path %>
-<% end %>
+<%= react_component("GamesList") %>

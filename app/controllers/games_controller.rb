@@ -2,12 +2,9 @@ class GamesController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [ :update, :destroy ]
   before_action :authenticate_user!
 
-  def games_as_json
+  def index
     games = Game.all
     render json: games.as_json()
-  end
-
-  def index
   end
 
   def new
@@ -44,7 +41,7 @@ class GamesController < ApplicationController
 
   def destroy
     game = Game.find_by_id(params[:id])
-    redirect_to games_path
+    redirect_to index_path
     game.destroy if game
   end
 

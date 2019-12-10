@@ -22,8 +22,8 @@ class GamesList extends React.Component {
   }
 
   getGames() {
-    axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games_as_json/')
-    //axios.get('http://localhost:3000/games_as_json')
+    axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games')
+    //axios.get('http://localhost:3000/games')
     .then((res) =>
       this.linkGenerator(this.urlGenerator(this.dataScanner(res)))
     )
