@@ -728,7 +728,15 @@ class Game extends React.Component {
     )
   }
 
+  setupBeforeUnloadListener() {
+    window.addEventListener("beforeunload", (ev) => {
+      ev.preventDefault();
+      this.deleteGameInstance();
+    });
+  };
+
   componentDidMount() {
+    this.setupBeforeUnloadListener();
     this.interval = setInterval(() => {
       this.requestDataFromDataBase();
       this.maintainHistoryLength();

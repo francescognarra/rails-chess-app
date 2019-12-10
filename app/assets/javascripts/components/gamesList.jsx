@@ -37,8 +37,8 @@ class GamesList extends React.Component {
 
   urlGenerator(gameInfo) {
     return gameInfo.map((playersAndId) => {
-      //let url = 'http://localhost:3000/games/';
-      let url = 'https://chess-app-rails-andy-strube.herokuapp.com/games/';
+      const url = 'https://chess-app-rails-andy-strube.herokuapp.com/games/';
+      //const url = 'http://localhost:3000/games/';
       return [url + playersAndId[0] + '/edit', playersAndId[1], playersAndId[2]];
     });
   }
@@ -57,7 +57,7 @@ class GamesList extends React.Component {
   render() {
     return(
       <div>
-        {this.state.links.map(function(link) {
+        {this.state.links.map((link) => {
           return link;
         })}
       </div>
