@@ -687,7 +687,7 @@ class Game extends React.Component {
     if(String(res.data.board) !== String(this.state.history[this.state.history.length - 2])) {
       this.setState({
         board: res.data.board,
-        blackTeamsTurn: res.data.black_teams_turn,
+        blackTeamsTurn: !this.state.blackTeamsTurn,
         player_1: res.data.player_1,
         player_2: res.data.player_2
       });

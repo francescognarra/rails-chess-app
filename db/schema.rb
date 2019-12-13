@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 2019_10_25_001914) do
     t.string "player_1", default: ""
     t.string "player_2", default: ""
     t.integer "user_id"
-    t.boolean "black_teams_turn", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
