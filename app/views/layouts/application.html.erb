@@ -17,7 +17,9 @@
           <ul class="navbar-nav mr-auto">
           <span> 
             <div class="nav-item">
-              <%= link_to 'Homepage', root_path %>
+              <div class="homepage_link">
+                <%= link_to 'Homepage', root_path %>
+              </div>
               <br/>
               </span>
             </div>
@@ -26,8 +28,10 @@
       </nav>
     <br/><br/><br/><br/>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="make-it-green text-center">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
 
     <%= yield %>
     </div>
