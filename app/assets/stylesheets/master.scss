@@ -68,3 +68,35 @@
 .navbar {
   height: 100px;
 }
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#flex-content-container {
+  flex: 1;
+}
+
+#footer {
+  position: relative;
+  width: 100%;
+  min-height: 70px;
+  background-color: rgba(24, 21, 22, 0.9);
+  padding: 10px 0px;
+  margin-top: 30px;
+}
+
+#footer a {
+  color: #00C122;
+  font-weight: 100;
+}
+
+.header-color {
+  background-color: rgba(24, 21, 22, 0.9);
+}
