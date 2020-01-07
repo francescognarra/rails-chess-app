@@ -11,6 +11,30 @@
 
   <body>
 
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        <span> 
+          <div class="nav-item">
+            <%= link_to 'Homepage', root_path %>
+            <br/>
+            </span>
+          </div>
+
+          <% if !current_user %>
+            <%= link_to 'Log in', new_user_session_path %>
+            <br />
+            <%= link_to 'Sign up', new_user_registration_path%>
+          <% end %>
+          
+          <% if current_user %>
+            <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+    <br/><br/><br/><br/>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 

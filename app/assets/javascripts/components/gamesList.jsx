@@ -50,7 +50,7 @@ class GamesList extends React.Component {
       }
     });
     this.setState({
-      links: links
+      links,
     });
   }
 

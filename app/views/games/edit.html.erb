@@ -1,7 +1,5 @@
 <%= link_to 'End match and return to game lobby', game_path(@game), method: :delete %>
 <br />
-<%= link_to 'End match and return to homepage', root_path %>
-<br />
 
 <% player = "player_1" %>
 <% if @game.user != current_user %>
