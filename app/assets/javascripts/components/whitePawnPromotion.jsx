@@ -26,11 +26,11 @@ class WhitePawnPromotion extends React.Component {
         columnLetter = 'A';
       }
       return(
-        <div>
+        <h6>
           You have a white pawn that is eligible for promotion located at {columnLetter}8.
           <br />
           Please make a selection.
-        </div>
+        </h6>
       );
     }
   }

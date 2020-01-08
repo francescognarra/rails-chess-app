@@ -1,95 +1,63 @@
 class SelectedPiece extends React.Component {
-    render() {
-      if(this.props.value === '♙') {
+
+    selectedPieceStatement() {
+      if(!this.props.value) {
         return(
-          <div>
-            Your current selected piece is: {this.props.value} White Pawn.
-            Click on a tile to place your selected piece
-          </div>
-        );
-      } else if(this.props.value === '♖') {
-        return(
-          <div>
-            Your current selected piece is: {this.props.value} White Rook.
-            Click on a tile to place your selected piece
-          </div>
-        );
-      } else if(this.props.value === '♘') {
-        return(
-          <div>
-            Your current selected piece is: {this.props.value} White Knight.
-            Click on a tile to place your selected piece
-          </div>
-        );
-      } else if(this.props.value === '♗') {
-        return(
-          <div>
-            Your current selected piece is: {this.props.value} White Bishop.
-            Click on a tile to place your selected piece
-          </div>
-        );
-      } else if(this.props.value === '♕') {
-        return(
-          <div>
-            Your current selected piece is: {this.props.value} White Queen.
-            Click on a tile to place your selected piece
-          </div>
-        );
-      } else if(this.props.value === '♔') {
-        return(
-          <div>
-            Your current selected piece is: {this.props.value} White King.
-            Click on a tile to place your selected piece
-          </div>
-        );
-      } else if(this.props.value === '♟') {
-        return(
-          <div>
-            Your current selected piece is: {this.props.value} Black Pawn.
-            Click on a tile to place your selected piece
-          </div>
-        );
-      } else if(this.props.value === '♜') {
-        return(
-          <div>
-            Your current selected piece is: {this.props.value} Black Rook.
-            Click on a tile to place your selected piece
-          </div>
-        );
-      } else if(this.props.value === '♞') {
-        return(
-          <div>
-            Your current selected piece is: {this.props.value} Black Knight.
-            Click on a tile to place your selected piece
-          </div>
-        );
-      } else if(this.props.value === '♝') {
-        return(
-          <div>
-            Your current selected piece is: {this.props.value} Black Bishop.
-            Click on a tile to place your selected piece
-          </div>
-        );
-      } else if(this.props.value === '♛') {
-        return(
-          <div>
-            Your current selected piece is: {this.props.value} Black Queen.
-            Click on a tile to place your selected piece
-          </div>
-        );
-      } else if(this.props.value === '♚') {
-        return(
-          <div>
-            Your current selected piece is: {this.props.value} Black King.
-            Click on a tile to place your selected piece
-          </div>
-        );
-      } else {
-        return(
-          <div>
+          <h6>
             You have no selected pieces. Click on a piece to select it
-          </div>
+          </h6>
         );
       }
+      let pieceType;
+      if(this.props.value === '♙') {
+        pieceType = "White Pawn";
+      }
+      if(this.props.value === '♖') {
+        pieceType = "White Rook";
+      }
+      if(this.props.value === '♘') {
+        pieceType = "White Knight";
+      }
+      if(this.props.value === '♗') {
+        pieceType = "White Bishop";
+      }
+      if(this.props.value === '♕') {
+        pieceType = "White Queen";
+      }
+      if(this.props.value === '♔') {
+        pieceType = "White King";
+      }
+      if(this.props.value === '♟') {
+        pieceType = "Black Pawn";
+      }
+      if(this.props.value === '♜') {
+        pieceType = "Black Rook";
+      }
+      if(this.props.value === '♞') {
+        pieceType = "Black Knight";
+      }
+      if(this.props.value === '♝') {
+        pieceType = "Black Bishop";
+      }
+      if(this.props.value === '♛') {
+        pieceType = "Black Queen";
+      }
+      if(this.props.value === '♚') {
+        pieceType = "Black King";
+      }
+      return(
+        <h6>
+          Your current selected piece is: {this.props.value} {pieceType}.
+          Click on a tile to place your selected piece
+        </h6>
+      );
     }
+
+  render() {
+    return(
+      <div>
+        {this.selectedPieceStatement()}
+      </div>
+    );
   }
+}

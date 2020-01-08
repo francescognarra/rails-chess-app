@@ -2,16 +2,16 @@ class PlayerTeamStatement extends React.Component {
   render() {
     if(this.props.player === 'player_1') {
       return(
-        <div>
+        <h6>
           Your playing as the white team
-        </div>
+        </h6>
       );
     }
     if(this.props.player === 'player_2') {
       return(
-        <div>
+        <h6>
           Your playing as the black team
-        </div>
+        </h6>
       );
     }
   }

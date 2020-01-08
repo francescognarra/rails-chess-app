@@ -2,9 +2,9 @@ class WhoVsWho extends React.Component {
 
   render() {
     return(
-      <div>
+      <h6>
         (Host) {this.props.player_1} VS (Guest) {this.props.player_2}
-      </div>
+      </h6>
     );
   }
 }

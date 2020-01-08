@@ -26,11 +26,11 @@ class BlackPawnPromotion extends React.Component {
       columnLetter = 'A';
     }
     return(
-      <div>
+      <h6>
         You have a black pawn that is eligible for promotion located at {columnLetter}1.
         <br />
         Please make a selection.
-      </div>
+      </h6>
     );
   }
 }

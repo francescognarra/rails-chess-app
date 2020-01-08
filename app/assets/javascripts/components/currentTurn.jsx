@@ -2,15 +2,15 @@ class CurrentTurn extends React.Component {
     render() {
       if(!this.props.value) {
         return(
-          <div>
+          <h6>
             It's currently the white team's turn
-          </div>
+          </h6>
         );
       } else {
         return(
-          <div>
+          <h6>
             It's currently the black team's turn
-          </div>
+          </h6>
         );
       }
     }
