@@ -56,7 +56,7 @@ class GamesList extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className="game-links">
         {this.state.links.map((link) => {
           return link;
         })}
