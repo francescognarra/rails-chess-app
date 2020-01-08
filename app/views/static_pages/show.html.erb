@@ -1,19 +1,25 @@
-<div class="text-center make-it-green">
-  <h2>Chess App by Andy Strube</h2>
-  <h3>You need to be signed in to use this app</h3>
+<div class="text-center">
+  <div class="container">
+    <div class="make-it-green box col-10">
+      <h2>Chess App by Andy Strube</h2>
+      <h3>Sign up or log in to start playing!</h3>
+      <br/>
 
-  <% if current_user %>
-    <%= link_to "Start a new game", new_game_path, class: 'make-it-green' %>
-    <br />
-    <%= link_to 'Go to games lobby', index_path, class: 'make-it-green' %>
-    <br/>
-    <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'make-it-green' %>
-  <% end %>
+      <% if current_user %>
+        <%= link_to "Start a new game", new_game_path, class: 'btn btn-primary make-it-green' %>
+        <br /><br/>
+        <%= link_to 'Go to games lobby', index_path, class: 'btn btn-primary make-it-green' %>
+        <br/><br/>
+        <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'btn btn-primary make-it-green' %>
+      <% end %>
 
-  <% if !current_user %>
-    <%= link_to 'Log in', new_user_session_path, class: 'make-it-green' %>
-    <br />
-    <%= link_to 'Sign up', new_user_registration_path, class: 'make-it-green' %>
-  <% end %>
+      <% if !current_user %>
+        <%= link_to 'Log in', new_user_session_path, class: 'btn btn-primary make-it-green' %>
+        <br/><br/>
+        <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary make-it-green' %>
+        <br/><br/>
+      <% end %>
 
+    </div>
+  </div>
 </div>

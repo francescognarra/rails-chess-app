@@ -125,9 +125,15 @@ body {
   -webkit-box-shadow: 1px 1px 2px 0 rgb(41, 38, 38);
   box-shadow: 1px 1px 2px 0 rgb(41, 38, 38);
   background: rgb(41, 38, 38);
-  border: 1px solid #ccc;
-  border-color: rgb(41, 38, 38);
   padding: 10px;
+}
+
+.are-you-sure-box {
+  -moz-box-shadow: 1px 1px 2px 0 rgb(41, 38, 38);
+  -webkit-box-shadow: 1px 1px 2px 0 rgb(41, 38, 38);
+  box-shadow: 1px 1px 2px 0 rgb(41, 38, 38);
+  background: rgb(41, 38, 38);
+  padding: 50px;
 }
 
 .container{

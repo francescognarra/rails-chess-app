@@ -1,4 +1,9 @@
-<%= simple_form_for @game do |f| %>
-  <br/>
-  <%= f.submit 'Create', class: 'btn btn-primary' %>
-<% end %>
+<div class="text-center">
+  <div class="container">
+    <div class="make-it-green are-you-sure-box col-5">
+      <%= simple_form_for @game do |f| %>
+        <%= f.submit 'Are you sure?', class: 'btn btn-primary make-it-green' %>
+      <% end %>
+    </div>
+  </div>
+</div>
