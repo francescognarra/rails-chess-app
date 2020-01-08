@@ -8,12 +8,12 @@
   font-size: 24px;
   font-weight: bold;
   line-height: 60px;
-  height: 60px;
+  height: 90px;
+  width: 90px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 60px;
 }
 
 .letter-column-square{
@@ -24,11 +24,13 @@
   font-weight: bold;
   line-height: 60px;
   height: 30px;
+  width: 90px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 60px;
+  background-color: rgba(24, 21, 22, 0.9);
+  border-color: #00C122;
 }
 
 .letter-row{
@@ -42,12 +44,14 @@
   font-size: 24px;
   font-weight: bold;
   line-height: 60px;
-  height: 60px;
+  height: 90px;
+  width: 29px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 29px;
+  background-color:rgba(24, 21, 22, 0.9);
+  border-color: #00C122;
 }
 
 .letters{
@@ -151,4 +155,16 @@ body {
 .game-links a {
   font-size: 25px;
   color: #00C122;
+}
+
+.game {
+  color: #00C122;
+}
+
+.piece {
+  font-size: 60px;
+}
+
+.make-it-dark {
+  background-color: rgb(41, 38, 38); 
 }

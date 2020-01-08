@@ -1,4 +1,4 @@
-<%= link_to 'End match and return to game lobby', game_path(@game), method: :delete %>
+<%= link_to 'End match and return to game lobby', game_path(@game), method: :delete, class: 'btn btn-primary make-it-green' %>
 <br />
 
 <% player = "player_1" %>
@@ -6,4 +6,6 @@
   <% player = "player_2" %>
 <% end %>
 
-<%= react_component("Game", {id: @game.id, player: player}) %>
+<div class="container game box">
+  <%= react_component("Game", {id: @game.id, player: player}) %>
+</div>

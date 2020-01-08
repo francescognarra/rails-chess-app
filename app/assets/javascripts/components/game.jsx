@@ -556,6 +556,8 @@ class Game extends React.Component {
       <Square
         value={this.state.board[rowInx][colInx]}
         onClick={() => this.movePiece(rowInx, colInx)}
+        rowInx={rowInx}
+        colInx={colInx}
       />
     );
   }
@@ -774,6 +776,7 @@ class Game extends React.Component {
         {this.renderWhitePawnPromotion()}
         {this.renderBlackPawnPromotion()}
 
+        <div>
         <div className="board-row letter-row">
           {this.renderUpperLetterColumnSquare('H')}
           {this.renderUpperLetterColumnSquare('G')}
@@ -898,6 +901,7 @@ class Game extends React.Component {
           {this.renderLowerLetterColumnSquare('C')}
           {this.renderLowerLetterColumnSquare('B')}
           {this.renderLowerLetterColumnSquare('A')}
+        </div>
         </div>
       </div>
     );
