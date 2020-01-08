@@ -377,10 +377,14 @@ class Game extends React.Component {
   moveKing(rowInx, colInx) {
     let boardClone = this.state.board;
     if(this.legalMoveForWhitePiece(this.state.selPce, boardClone[rowInx][colInx])) {
-      this.movementLogicForKings(rowInx, colInx);
+      if(boardClone[rowInx][colInx] !== '♛') {
+        this.movementLogicForKings(rowInx, colInx);
+      }
     }
     if(this.legalMoveForBlackPiece(this.state.selPce, boardClone[rowInx][colInx])) {
-      this.movementLogicForKings(rowInx, colInx);
+      if(boardClone[rowInx][colInx] !== '♕') {
+        this.movementLogicForKings(rowInx, colInx);
+      }
     }
     return boardClone;
   }
@@ -455,7 +459,6 @@ class Game extends React.Component {
     }
   }
 
-  // I plan on updating this function to detect checkmates at a later time
   gameIsOver(board) {
     let allPieces = [];
     for(let row = 0; row <= 7; row++) {
@@ -776,7 +779,6 @@ class Game extends React.Component {
         {this.renderWhitePawnPromotion()}
         {this.renderBlackPawnPromotion()}
 
-        <div>
         <div className="board-row letter-row">
           {this.renderUpperLetterColumnSquare('H')}
           {this.renderUpperLetterColumnSquare('G')}
@@ -901,7 +903,6 @@ class Game extends React.Component {
           {this.renderLowerLetterColumnSquare('C')}
           {this.renderLowerLetterColumnSquare('B')}
           {this.renderLowerLetterColumnSquare('A')}
-        </div>
         </div>
       </div>
     );
