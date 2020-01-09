@@ -790,6 +790,7 @@ class Game extends React.Component {
           {this.renderUpperLetterColumnSquare('A')}
         </div>
 
+        <div className="board">
         <div className="board-row">
           {this.renderNumberColumnSquare('1')}
           {this.renderSquare(0, 0)}
@@ -892,6 +893,7 @@ class Game extends React.Component {
           {this.renderSquare(7, 6)}
           {this.renderSquare(7, 7)}
           {this.renderNumberColumnSquare('8')}
+        </div>
         </div>
 
         <div className="board-row letter-row">
