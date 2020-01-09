@@ -1,5 +1,7 @@
-<%= link_to 'End match and return to game lobby', game_path(@game), method: :delete, class: 'btn btn-primary make-it-green' %>
-<br />
+<div class="in-game-lobby-link">
+  <%= link_to 'End match and return to game lobby', game_path(@game), method: :delete, class: 'btn btn-primary make-it-green' %>
+  <br /><br />
+</div>
 
 <% player = "player_1" %>
 <% if @game.user != current_user %>
