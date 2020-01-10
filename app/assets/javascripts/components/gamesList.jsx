@@ -18,7 +18,7 @@ class GamesList extends React.Component {
   componentDidMount() {
     this.interval = setInterval(() => {
       this.getGames();
-    }, 3000);
+    }, 2000);
   }
 
   getGames() {
