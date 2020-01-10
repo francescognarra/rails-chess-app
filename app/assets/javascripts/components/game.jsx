@@ -745,7 +745,7 @@ class Game extends React.Component {
     this.interval = setInterval(() => {
       this.requestDataFromDataBase();
       this.maintainHistoryLength();
-    }, 1500);
+    }, 3000);
   }
 
   componentWillMount() {
