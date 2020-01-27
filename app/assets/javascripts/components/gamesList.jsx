@@ -23,7 +23,6 @@ class GamesList extends React.Component {
 
   getGames() {
     axios.get('https://chess-app-rails-andy-strube.herokuapp.com/games')
-    //axios.get('http://localhost:3000/games')
     .then((res) =>
       this.linkGenerator(this.urlGenerator(this.dataScanner(res)))
     )
@@ -38,7 +37,6 @@ class GamesList extends React.Component {
   urlGenerator(gameInfo) {
     return gameInfo.map((playersAndId) => {
       const url = 'https://chess-app-rails-andy-strube.herokuapp.com/games/';
-      //const url = 'http://localhost:3000/games/';
       return [url + playersAndId[0] + '/edit', playersAndId[1], playersAndId[2]];
     });
   }
